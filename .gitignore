@@ -1,0 +1,12 @@
+*.pc[cod]
+*.swp[a-z]
+to-learn
+*.log
+*.so
+*.sw[po]
+tags
+cscope*
+html
+build
+out
+doc/design

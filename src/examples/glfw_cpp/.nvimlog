@@ -1,0 +1,28 @@
+INFO  2019-04-12T16:04:55.298 29738 on_process_exit:385: exited: pid=29739 status=0 stoptime=0
+INFO  2019-04-12T16:04:55.404 29738 channel_create_event:207: new channel 3 (function <SNR>35_on_bufenter[5]..gitgutter#init_buffer[4]..gitgutter#utility#set_repo_path[11]..gitgutter#async#execute:11) : {"id": 3, "mode": "bytes", "stream": "job"}
+INFO  2019-04-12T16:04:55.405 29738 on_process_exit:385: exited: pid=29741 status=0 stoptime=0
+INFO  2019-04-12T16:04:55.406 29738 on_process_exit:385: exited: pid=29743 status=0 stoptime=0
+INFO  2019-04-12T16:04:55.413 29738 channel_create_event:207: new channel 4 (function <SNR>35_on_bufenter[6]..gitgutter#process_buffer[8]..gitgutter#diff#run_diff[83]..gitgutter#async#execute:11) : {"id": 4, "mode": "bytes", "stream": "job"}
+INFO  2019-04-12T16:04:55.415 29738 channel_create_event:207: new channel 5 (function youcompleteme#Enable[3]..<SNR>90_SetUpPython[78]..provider#python3#Call[9]..remote#host#Require[10]..provider#pythonx#Require[13]..provider#Poll:3) : {"id": 5, "client": {}, "mode": "rpc", "stream": "job"}
+INFO  2019-04-12T16:04:55.416 29738 on_process_exit:385: exited: pid=29744 status=0 stoptime=0
+INFO  2019-04-12T16:04:55.519 29738 on_process_exit:385: exited: pid=29752 status=0 stoptime=0
+INFO  2019-04-12T16:04:55.519 29738 main:592: starting main loop
+INFO  2019-04-12T16:04:55.526 29738 channel_create_event:207: new channel 6 (function airline#extensions#branch#get_head[1]..airline#extensions#branch#head[6]..<SNR>73_update_untracked[33]..airline#async#nvim_vcs_untracked:19) : {"id": 6, "mode": "bytes", "stream": "job"}
+INFO  2019-04-12T16:04:55.528 29738 on_process_exit:385: exited: pid=29753 status=0 stoptime=0
+INFO  2019-04-12T16:05:05.204 29738 channel_create_event:207: new channel 7 (function provider#clipboard#Call[6]..285:31) : {"id": 7, "mode": "bytes", "stream": "job"}
+INFO  2019-04-12T16:05:16.674 29738 channel_create_event:207: new channel 8 (function <SNR>35_on_bufenter[6]..gitgutter#process_buffer[8]..gitgutter#diff#run_diff[83]..gitgutter#async#execute:11) : {"id": 8, "mode": "bytes", "stream": "job"}
+INFO  2019-04-12T16:05:16.676 29738 on_process_exit:385: exited: pid=29811 status=0 stoptime=0
+INFO  2019-04-12T16:05:29.227 29738 channel_create_event:207: new channel 9 (function airline#extensions#branch#get_head[1]..airline#extensions#branch#head[6]..<SNR>73_update_untracked[33]..airline#async#nvim_vcs_untracked:19) : {"id": 9, "mode": "bytes", "stream": "job"}
+INFO  2019-04-12T16:05:29.229 29738 on_process_exit:385: exited: pid=29817 status=0 stoptime=0
+INFO  2019-04-12T16:05:32.610 29738 channel_create_event:207: new channel 10 (function <SNR>35_on_bufenter[6]..gitgutter#process_buffer[8]..gitgutter#diff#run_diff[83]..gitgutter#async#execute:11) : {"id": 10, "mode": "bytes", "stream": "job"}
+INFO  2019-04-12T16:05:32.612 29738 on_process_exit:385: exited: pid=29818 status=0 stoptime=0
+INFO  2019-04-12T16:05:32.644 29738 channel_create_event:207: new channel 11 (function <SNR>35_on_bufenter[5]..gitgutter#init_buffer[4]..gitgutter#utility#set_repo_path[11]..gitgutter#async#execute:11) : {"id": 11, "mode": "bytes", "stream": "job"}
+INFO  2019-04-12T16:05:32.646 29738 on_process_exit:385: exited: pid=29826 status=0 stoptime=0
+INFO  2019-04-12T16:05:32.652 29738 channel_create_event:207: new channel 12 (function <SNR>35_on_bufenter[6]..gitgutter#process_buffer[8]..gitgutter#diff#run_diff[83]..gitgutter#async#execute:11) : {"id": 12, "mode": "bytes", "stream": "job"}
+INFO  2019-04-12T16:05:32.655 29738 on_process_exit:385: exited: pid=29830 status=0 stoptime=0
+INFO  2019-04-12T16:05:32.669 29738 channel_create_event:207: new channel 13 (function airline#extensions#branch#get_head[1]..airline#extensions#branch#head[6]..<SNR>73_update_untracked[33]..airline#async#nvim_vcs_untracked:19) : {"id": 13, "mode": "bytes", "stream": "job"}
+INFO  2019-04-12T16:05:32.671 29738 on_process_exit:385: exited: pid=29835 status=0 stoptime=0
+INFO  2019-04-12T16:06:15.412 29738 on_process_exit:385: exited: pid=29806 status=0 stoptime=0
+INFO  2019-04-12T16:07:07.590 29738 os_proc_tree_kill:96: sending SIGTERM to process group: -29749
+INFO  2019-04-12T16:07:07.619 29738 on_process_exit:385: exited: pid=29749 status=0 stoptime=91178183065436
+INFO  2019-04-12T16:07:07.620 29738 mch_exit:152: Nvim exit: 1
