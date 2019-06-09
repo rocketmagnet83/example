@@ -6,9 +6,10 @@ import ycm_core
 import re
 
 BASE_FLAGS = [
+        '-Werror',
         '-Wall',
         '-fexceptions',
-        '-ferror-limit=10000',
+        '-ferror-limit=100',
         '-DWITH_DEBUG',
         '-std=c++11',
         '-xc++',

@@ -24,6 +24,7 @@ if(WITH_LIB_GLFW)
     )
 
     set(LIB_GLFW_INC_PATH
+		${PLATFORM_INC_PATH}
         ${OUTPUT_PATH}/glad/include
 		${OUTPUT_PATH}/glfw3/include
 		${OPENGL_INCLUDE_DIR}
@@ -31,6 +32,7 @@ if(WITH_LIB_GLFW)
     )
 
     set(LIB_GLFW_LIB_PATH
+		${PLATFORM_LIB_PATH}
 		${OUTPUT_PATH}/glad/lib
 		${OUTPUT_PATH}/glfw3/lib
 		${OPENGL_LIBRARIES}
@@ -40,27 +42,14 @@ if(WITH_LIB_GLFW)
 	set(LIB_GLFW_EXAMPLE_BASIC_SHARED FALSE)
 
     set(LIB_GLFW_STATIC_LIBS
-        glad 
+		${LIB_GLAD_STATIC_LIBS}
         glfw3 
-        rt 
-        m 
-        ${CMAKE_DL_LIBS} 
-        OpenGL::GL 
-        Threads::Threads 
-        X11::X11 
-        X11::Xxf86vm 
-        X11::Xi 
-        X11::Xrandr 
-        X11::Xcursor 
-        X11::Xinerama
     )
 
     set(LIB_GLFW_SHARED_LIBS
-        glad
+		${PLATFORM_STATIC_LIBS}
+		${LIB_GLAD_STATIC_LIBS}
         glfw3
-        m
-        rt
-        ${CMAKE_DL_LIBS}
         OpenGL::GL 
         Threads::Threads
 		X11::X11
@@ -87,7 +76,7 @@ if(WITH_LIB_GLFW)
 		CMAKE_ARGS -DCMAKE_BUILD_TYPE:String={CMAKE_BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=${OUTPUT_PATH}/glfw3
 		INSTALL_COMMAND COMMAND
 			${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/glfw3/src/external_glfw3/deps/linmath.h ${OUTPUT_PATH}/glfw3/include/linmath.h &&
-			make install
+			make -j${CPU_COUNT} install
 	)
 
 

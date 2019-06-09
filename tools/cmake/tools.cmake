@@ -59,3 +59,60 @@ macro(bsIncludeLibExamples)
 	endforeach()
 endmacro()
 
+######################
+## bsBuildDoxygen() ##
+######################
+macro(bsBuildDocs)
+	if(GENERATE_DOCS)
+		# check if Doxygen is installed
+		find_package(Doxygen)
+		if(DOXYGEN_FOUND)
+			# set input and output files
+			set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/doc/manual/Doxyfile.in)
+			set(DOXYGEN_OUT ${CMAKE_CURRENT_SOURCE_DIR}/doc/manual/Doxyfile)
+
+			# request to configure the file
+			configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
+			message("Doxygen build started")
+
+			# note the option ALL which allows to build the docs together with the application
+			add_custom_target( doc_doxygen ALL
+				COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
+				WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+				COMMENT "Generating API documentation with Doxygen"
+				VERBATIM )
+		else()
+		  message("Doxygen need to be installed to generate the doxygen documentation")
+		endif()
+	endif()
+endmacro()
+
+#############################
+## bsGetCompileDefinitions ##
+#############################
+macro(bsGetBuildCompileDefinitions)
+	# get build time/date
+	string(TIMESTAMP VERSION "%Y-%m-%d %H:%M")
+	add_definitions(-DVERSION="${VERSION}")
+# OR
+	string(TIMESTAMP {output variable} [{format string}] [UTC])
+	# get git revision
+	set(_build_version "unknown")
+
+	find_package(Git)
+	if(GIT_FOUND)
+	  execute_process(
+		COMMAND ${GIT_EXECUTABLE} rev-parse --short HEAD
+		WORKING_DIRECTORY "${local_dir}"
+		OUTPUT_VARIABLE _build_version
+		ERROR_QUIET
+		OUTPUT_STRIP_TRAILING_WHITESPACE
+	  )
+	  message( STATUS "GIT hash: ${_build_version}")
+	else()
+	  message(STATUS "GIT not found")
+	endif()
+	 
+	string(TIMESTAMP _time_stamp)
+	configure_file(${local_dir}/cmake/gitversion.h.in ${output_dir}/gitversion.h @ONLY)
+endmacro()

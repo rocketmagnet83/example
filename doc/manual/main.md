@@ -7,24 +7,17 @@
  * [TOC]
  *
  * = Introduction =
- * = Node Types =
- * The hole application is based on atomic operations so called *nodes*. With 
- * them you can do whatever you want without any programming (but you can 
- * create your own nodes with or without programming).
+ * bsEdit is an application framework for all kinds of 2D/3D applications/games. It contains everything you need to write your own 2D/3D games.
  *
- *  == Types Nodes ==
- * The backbone of the hole design are the type nodes. All possible variables
- * are defined as typenodes.
- *
- *  == Object Nodes ==
- *  Every object that is part of the application is an object node. A object node can have as many typenodes as it wants to store data. Every typenode can get connected to other nodes which must have the same type as the typenode.
- *
- *  == Operator Nodes ==
- *  Operator nodes are the working horses of the engine. They manipulate/create/update object or typenodes. They are the functions of the engine. You have a full set of default operator nodes and you can create your own nodes with 
- *  a programming language very similar to C++. There are plenty of operator nodes to choose from to build basic applications. Operator nodes can also handle user input events or system events.
- *
- *
- *
+ * == Features ==
+ *  - In-game console
+ *  - Text editor
+ *  - Code editor
+ *  - most of the dependencies are downloaded and build during the build process.
+ *  - Crossplatform support for Windows, Linux and MacOSX.
+ *  - Custom installer for each supported platform.
+ *  - JSON file format support (nlohmann_json API).
+ *  - own graphic interface API based on OpenGL 4.0 - codename KoiUserInrerface..
  *
  *
  **/

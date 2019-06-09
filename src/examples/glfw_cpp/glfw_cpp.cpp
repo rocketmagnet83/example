@@ -8,11 +8,10 @@
 
 #include "bs/sys/GLFWWrapper.hpp"
 
-
 #include <iostream>
 
 
-class System : public bs::sys::GLFWWrapper
+class System : public GLFWWrapper
 {
 public:
     System()
@@ -29,6 +28,7 @@ public:
 #ifdef WITH_DEBUG
 		std::cout << "onInit();" << std::endl;
 #endif
+		std::cout << "Welcome"; 
 
 //        wnd->setLayout(new GridLayout());
 //        auto button = wnd->add(new bsUINodeButton("Press Me"));

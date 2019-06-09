@@ -46,33 +46,6 @@ if(MSVC)
 	)
 ENDIF()
 
-##################
-### OUTPUT_PATH ##
-##################
-IF(UNIX)
-	IF(CMAKE_BUILD_TYPE STREQUAL "Release")
-		set(OUTPUT_PATH ${CMAKE_SOURCE_DIR}/out/Release CACHE PATH "The output directory for binaries")
-		set(BSEDIT_CXX_FLAGS_RELEASE "-O3 -Wall -DNDEBUG")
-		set(BSEDIT_C_FLAGS_RELEASE "-O3 -Wall -DNDEBUG")
-		message(STATUS "Creating a Linux Release build.")
-	ELSE()
-		set(OUTPUT_PATH ${CMAKE_SOURCE_DIR}/out/Debug CACHE PATH "The output directory for binaries")
-		set(BSEDIT_CXX_FLAGS_DEBUG "-g -Wall -DWITH_DEBUG -DDEBUG")
-		set(BSEDIT_C_FLAGS_DEBUG "-g -Wall -DWITH_DEBUG -DDEBUG")
-		message(STATUS "Creating a Linux Debug build.")
-	ENDIF()
-ELSEIF(WIN32)
-	message(FATAL_ERROR "Creating an Windows '$<CONFIG>' build.")
-	IF(MSVC)
-		set(OUTPUT_PATH ${CMAKE_SOURCE_DIR}/out/$<CONFIG>/)
-	ENDIF(MSVC)
-
-ELSEIF(APPLE)
-	message(FATAL_ERROR "Creating an APPLE build.")
-ENDIF()
-
-
-
 #######################
 ### SET MODULE PATH ###
 #######################
@@ -86,6 +59,32 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/tools/cmake/modules)
 include(versions)
 include(tools)
 include(options)
+
+
+##################################################
+### OUTPUT_PATH AND PLATFORM SPECIFIC VARIABLES ##
+##################################################
+IF(UNIX)
+	include(platform_linux)
+	IF(CMAKE_BUILD_TYPE STREQUAL "Release")
+		message(STATUS "Creating a Linux Release build.")
+		set(OUTPUT_PATH ${CMAKE_SOURCE_DIR}/out/Release CACHE PATH "The output directory for binaries")
+	ELSE()
+		set(OUTPUT_PATH ${CMAKE_SOURCE_DIR}/out/Debug CACHE PATH "The output directory for binaries")
+		message(STATUS "Creating a Linux Debug build.")
+	ENDIF()
+ELSEIF(WIN32)
+	message(FATAL_ERROR "Creating an Windows '$<CONFIG>' build.")
+	include(platform_windows)
+	IF(MSVC)
+		set(OUTPUT_PATH ${CMAKE_SOURCE_DIR}/out/$<CONFIG>/)
+	ENDIF(MSVC)
+
+ELSEIF(APPLE)
+	message(FATAL_ERROR "Creating an APPLE build.")
+	include(platform_apple)
+ENDIF()
+
 
 
 
@@ -107,13 +106,24 @@ set(BSEDIT_CXX_STANDARD_REQUIRED True)
 set(BSEDIT_CXX_STANDARD 11)
 set(BSEDIT_CXX_COMPILER g++)
 
+#########################################
+## Build the doxygen API documentation ##
+#########################################
+#bsBuildDocs()
+
+###########################################################
+## Get the git revision and time/date of the compilation ##
+###########################################################
+#bsGetBuildCompileDefinitions()
 
 ###############################################################
 ## Start the build process of the libraries and the examples ##
 ###############################################################
 bsBuildLibs(${ALL_LIBS})
 
+######################################
+## TODO: Build the final executable ##
+######################################
 
 
-
-
+##bsBuildFinalApplication()

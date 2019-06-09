@@ -6,16 +6,16 @@
 #include <vector>
 
 #include "uiRect.hpp"
-#include "uiSignalHandler.hpp"
-
-namespace bs {
-namespace ui {
 
 
-class uiNode : public uiRect, public uiSignalHandler
+/**
+ * Interface class for all user interface elements.
+ */
+class uiNode : public uiRect
 {
  public:
-	uiNode(const char *name) : m_node_name(name);
+	uiNode(const char *name) : uiRect()
+	{}
 	virtual ~uiNode();
 
 	/**
@@ -40,16 +40,12 @@ class uiNode : public uiRect, public uiSignalHandler
 
 
  protected:
-	std::string m_node_name;			/** the name of the UINode. */
-	uiRect rect;				/** The rectangle containing the UINode. */
+	std::string m_nodeName;			/** the name of the UINode. */
+	uiRect rect;					/** The rectangle containing the UINode. */
 	uiNode *parent = nullptr;		/** Pointer to the parent element. */
 	std::vector<uiNode*> children;	/** std::vector to store all child nodes. */
 
 };
-
-};	/** namespace std */
-};  /** namespace ui */
-
 
 
 #endif

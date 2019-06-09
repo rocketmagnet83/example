@@ -1,18 +1,26 @@
+/**
+ * \package bs.ui
+ *
+ *
+ */
 
-#ifndef _BS_UIRECT_H_
-#define _BS_UIRECT_H_
+#ifndef _BS_UIRECT_HEADER_
+#define _BS_UIRECT_HEADER_
 
 
 /**
  * \author Steven Truppe
  * \copyright Copyright (c) by Steven Truppe
  *
- * A simple rectangle, parent class for bsUINode.
+ * A simple rectangle, parent class for /see uiNode.
  */
 class uiRect
 {
 public:
-    uiRect(int x1, int y1, int x2, int y2);
+	uiRect(uiRect *r, uiRect *root=nullptr);
+    uiRect(int x1, int y1, int x2, int y2, uiRect *root=nullptr);
+
+	/** Destructor */
     ~uiRect();
 
     /**
@@ -57,8 +65,9 @@ private:
 
 protected:
 
-    int m_x1,m_y1;
-    int m_x2,m_y2;
+	uiRect *m_root;		/** The parent uiRect. */
+    int m_x1,m_y1;		/** uppler left and upper right coordinates. */
+    int m_x2,m_y2;		/** lower left and lower right coordinates. */
 };
 
 #endif
