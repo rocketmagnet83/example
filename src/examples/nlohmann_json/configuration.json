@@ -3,5 +3,9 @@
 		"wndTitle": "nlohmann_json Test",
 		"width": 800,
 		"height": 600
+	},
+	"applications":{
+
+
 	}
 }

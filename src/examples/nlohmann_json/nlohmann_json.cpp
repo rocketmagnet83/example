@@ -16,7 +16,7 @@ auto config = R"(
 
 int main(int argc, char **argv)
 {
-
+	std::cout << "Try to load external json file: " << filename;
 
 
 
