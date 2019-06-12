@@ -1,20 +1,21 @@
 IF(WITH_LIB_NLOHMANN_JSON)
-    set(LIB_NLOHMANN_JSON_INCLUDE_PATH
+	set(LIB_NLOHMANN_JSON_EXAMPLE_BASIC_COMPILER g++)
+	set(LIB_NLOHMANN_JSON_EXAMPLE_BASIC_CXX_STANDARD 11)
+	set(LIB_NLOHMANN_JSON_EXAMPLE_BASIC_CXX_STANDARD_REQUIRED TRUE)
+    
+
+	set(LIB_NLOHMANN_JSON_INC_PATH
         ${OUTPUT_PATH}/nlohmann_json/include/
     )
 
-    set(LIB_NLOHMANN_JSON_LIBS "")
-    set(LIB_NLOHMANN_JSON_SRC
+	set(LIB_NLOHMANN_JSON_EXAMPLE_BASIC_STATIC_LIBS ${PLATFORM_LIBS})
+	set(LIB_NLOHMANN_JSON_EXAMPLE_BASIC_SRC
         ${CMAKE_SOURCE_DIR}/src/examples/nlohmann_json/nlohmann_json.cpp
     )
 
-    set(LIB_NLOHMANN_JSON_INSTALL_PATH
-        ${OUTPUT_PATH}/examples/nlohmann_json
+	set(LIB_NLOHMANN_JSON_EXAMPLE_BASIC_INSTALL_PATH
+        ${OUTPUT_PATH}/examples/basic/nlohmann_json
     )
-
-    IF(CMAKE_BUILD_TYPE STREQUAL "Debug")
-        set(${LIB_EXAMPLE_NLOHMANN_JSON_PREFIX} _debug)
-    ENDIF()
 
     set(LIB_NLOHMANN_JSON_OUTPUT_NAME_RELEASE 
         nlohmann_json_release
@@ -24,6 +25,21 @@ IF(WITH_LIB_NLOHMANN_JSON)
     )
 
     set(LIB_NLOHMANN_JSON_DEPS
-        extern_nlohmann_json
+        external_nlohmann_json
     )
-ENDIF(WITH_LIB_NLOHMANN_JSON)
+
+	ExternalProject_Add(external_nlohmann_json
+		PREFIX ${CMAKE_BINARY_DIR}/nlohmann_json
+		URL ${NLOHMANN_JSON_REPO}
+		URL_HASH SHA256=${NLOHMANN_JSON_HASH}
+		DOWNLOAD_DIR ${CMAKE_BINARY_DIR}/nlohmann_json
+		DOWNLOAD_NO_EXTRACT 1
+		CONFIGURE_COMMAND ""
+		BUILD_COMMAND ""
+		INSTALL_COMMAND COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/nlohmann_json/json.hpp ${OUTPUT_PATH}/nlohmann_json/include/nlohmann/json.hpp
+	)
+
+
+
+
+ENDIF()
