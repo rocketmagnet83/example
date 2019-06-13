@@ -23,7 +23,7 @@ if(WITH_LIB_NLOHMANN_JSON_EXAMPLE_BASIC)
 		RUNTIME DESTINATION ${LIB_NLOHMANN_JSON_EXAMPLE_BASIC_INSTALL_PATH}
 	)
 	install(
-		FILES ${CMAKE_SOURCE_DIR}/src/examples/nlohmann_json/configuration.json
+		FILES ${CMAKE_SOURCE_DIR}/src/examples/nlohmann_json/basic/configuration.json
 		DESTINATION ${OUTPUT_PATH}/examples/nlohmann_json/basic/
 	)
 endif()

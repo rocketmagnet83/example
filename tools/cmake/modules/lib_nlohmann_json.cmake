@@ -10,11 +10,11 @@ IF(WITH_LIB_NLOHMANN_JSON)
 
 	set(LIB_NLOHMANN_JSON_EXAMPLE_BASIC_STATIC_LIBS ${PLATFORM_LIBS})
 	set(LIB_NLOHMANN_JSON_EXAMPLE_BASIC_SRC
-        ${CMAKE_SOURCE_DIR}/src/examples/nlohmann_json/nlohmann_json.cpp
+        ${CMAKE_SOURCE_DIR}/src/examples/nlohmann_json/basic/nlohmann_json.cpp
     )
 
 	set(LIB_NLOHMANN_JSON_EXAMPLE_BASIC_INSTALL_PATH
-        ${OUTPUT_PATH}/examples/basic/nlohmann_json
+        ${OUTPUT_PATH}/examples/nlohmann_json/basic/
     )
 
     set(LIB_NLOHMANN_JSON_OUTPUT_NAME_RELEASE 
