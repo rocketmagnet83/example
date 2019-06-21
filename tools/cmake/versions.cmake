@@ -48,6 +48,8 @@ set(FREETYPE_TAG 4e653f8dced3795f6f9a0495da34ce3dcdeba970)
 
 #########
 
+set(EIGEN_URL http://bitbucket.org/eigen/eigen/get/3.3.7.tar.bz2)
+set(EIGEN_HASH 05b1f7511c93980c385ebe11bd3c93fa)
 
 
 set(FTGL_REPO https://github.com/BSVino/ftgl-gl3.git)

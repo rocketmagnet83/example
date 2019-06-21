@@ -39,7 +39,4 @@ IF(WITH_LIB_NLOHMANN_JSON)
 		INSTALL_COMMAND COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/nlohmann_json/json.hpp ${OUTPUT_PATH}/nlohmann_json/include/nlohmann/json.hpp
 	)
 
-
-
-
 ENDIF()

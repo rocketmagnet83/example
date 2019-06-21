@@ -20,7 +20,7 @@ if(WITH_LIB_GLFW)
         gcc)
 
 	set(LIB_GLFW_EXAMPLE_CBASIC_SRC
-        ${CMAKE_SOURCE_DIR}/src/examples/glfw/glfw-init.c
+		${CMAKE_SOURCE_DIR}/src/examples/glfw/cbasic/glfw-init.c
     )
 
     set(LIB_GLFW_INC_PATH
@@ -50,13 +50,13 @@ if(WITH_LIB_GLFW)
 		${PLATFORM_STATIC_LIBS}
 		${LIB_GLAD_STATIC_LIBS}
         glfw3
+		X11::X11
         OpenGL::GL 
         Threads::Threads
-		X11::X11
     )
 
-	set(LIB_GLFW_EXAMPLE_CBASIC_RELEASE_OUTPUT_NAME glfw-init)
-	set(LIB_GLFW_EXAMPLE_CBASIC_DEBUG_OUTPUT_NAME glfw-init_d)
+	set(LIB_GLFW_EXAMPLE_CBASIC_RELEASE_OUTPUT_NAME glfw-cbasic)
+	set(LIB_GLFW_EXAMPLE_CBASIC_DEBUG_OUTPUT_NAME glfw-cbasic_d)
 
 	set(LIB_GLFW_EXAMPLE_CBASIC_DEPS
         external_glad
@@ -64,7 +64,7 @@ if(WITH_LIB_GLFW)
     )
 
 	set(LIB_GLFW_EXAMPLE_CBASIC_INSTALL_PATH
-        ${OUTPUT_PATH}/examples/glfw/
+        ${OUTPUT_PATH}/examples/glfw/cbasic/
     )
 
 	 ExternalProject_Add(external_glfw3

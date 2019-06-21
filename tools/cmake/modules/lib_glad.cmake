@@ -1,7 +1,6 @@
 
-cmake_print_variables(WITH_LIB_GLAD)
 IF(WITH_LIB_GLAD)
-	message(STATUS "Included lib_glad.cmake done.")
+	message(STATUS "Included lib_glad.cmake.")
 	###################
 	## first example ##
 	###################
