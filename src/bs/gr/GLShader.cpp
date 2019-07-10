@@ -4,17 +4,17 @@
 #include <fstream>
 
 
-bs::gr::GLShader::GLShader()
+GLShader::GLShader()
 {
 	m_shader = 0;
 }
 
-bs::gr::GLShader::~GLShader()
+GLShader::~GLShader()
 {
 }
 
 
-int bs::gr::GLShader::loadShaderFromFile(GLuint type, const char *fname)
+int GLShader::loadShaderFromFile(GLuint type, const char *fname)
 {
 	std::ifstream file;
 	std::string tmp, fin;

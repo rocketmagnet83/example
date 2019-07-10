@@ -1,19 +1,19 @@
 
-#ifndef BS_GR_GLSHADER_HPP
-#define BS_GR_GLSHADER_HPP
+#ifndef BS_GR_GLSHADER_HEADER
+#define BS_GR_GLSHADER_HEADER
 
 
 #ifdef __cplusplus
 extern "C" {
-#include "glad/glad.h"
+	#include <glad/glad.h>
 }
 #endif
+	
 
 #include <string>
 
 
-namespace bs {
-namespace gr {
+
 
 class GLShader
 {
@@ -33,8 +33,6 @@ protected:
 
 }; /** class GLShader */
 
-} /** namespace gr */
-} /** namespace bs */
 
 
 #endif

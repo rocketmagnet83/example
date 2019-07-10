@@ -12,8 +12,6 @@ extern "C" {
 #include <string>
 
 
-namespace bs {
-namespace gr {
 
 class GLShader
 {
@@ -33,8 +31,6 @@ protected:
 
 }; /** class GLShader */
 
-} /** namespace gr */
-} /** namespace bs */
 
 
 #endif

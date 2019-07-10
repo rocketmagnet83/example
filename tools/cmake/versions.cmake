@@ -8,6 +8,15 @@ set(GLFW_TAG 1b8e3fdeae93df6d211529140439c644fcc45f87)
 set(NLOHMANN_JSON_REPO http://github.com/nlohmann/json/releases/download/v3.5.0/json.hpp)
 set(NLOHMANN_JSON_HASH 8a6dbf3bf01156f438d0ca7e78c2971bca50eec4ca6f0cf59adf3464c43bb9d5)
 
+set(EIGEN_URL http://bitbucket.org/eigen/eigen/get/3.3.7.tar.bz2)
+set(EIGEN_HASH 05b1f7511c93980c385ebe11bd3c93fa)
+
+set(CLANG_LLVM_GIT https://github.com/llvm/llvm-project.git)
+set(CLANG_LLVM_HASH 15bd9f9d50d1759ca5bfdbb1482e2ecc0c6d567a)
+
+###
+###
+
 set(ZLIB_VERSION 1.2.11)
 set(ZLIB_URL https://zlib.net/zlib-${ZLIB_VERSION}.tar.gz)
 set(ZLIB_HASH 1c9f62f0778697a09d36121ead88e08e)
@@ -48,8 +57,6 @@ set(FREETYPE_TAG 4e653f8dced3795f6f9a0495da34ce3dcdeba970)
 
 #########
 
-set(EIGEN_URL http://bitbucket.org/eigen/eigen/get/3.3.7.tar.bz2)
-set(EIGEN_HASH 05b1f7511c93980c385ebe11bd3c93fa)
 
 
 set(FTGL_REPO https://github.com/BSVino/ftgl-gl3.git)
@@ -79,14 +86,6 @@ set(PYTHON_SHORT_VERSION 3.7)
 set(PYTHON_SHORT_VERSION_NO_DOTS 37)
 set(PYTHON_URI https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tar.xz)
 set(PYTHON_HASH eb8c2a6b1447d50813c02714af4681f3)
-
-set(CLANG_URI http://releases.llvm.org/${LLVM_VERSION}/cfe-${LLVM_VERSION}.src.tar.xz)
-set(CLANG_HASH 4e419bd4e3b55aa06d872320f754bd85)
-
-set(LLVM_VERSION 6.0.1)
-set(LLVM_URI http://releases.llvm.org/${LLVM_VERSION}/llvm-${LLVM_VERSION}.src.tar.xz)
-set(LLVM_HASH c88c98709300ce2c285391f387fecce0)
-
 
 set(PTHREADS_VERSION 3.0.0)
 set(PTHREADS_URI http://sourceforge.mirrorservice.org/p/pt/pthreads4w/pthreads4w-code-v${PTHREADS_VERSION}.zip)

@@ -29,3 +29,6 @@ option(WITH_LIB_NLOHMANN_JSON_EXAMPLE_BASIC "Buid a simple nlohmann_json example
 # WITH_LIB_EIGEN
 option(WITH_LIB_EIGEN "Build and link with the Eigen library" ON)
 option(WITH_LIB_EIGEN_EXAMPLE_BASIC "Simple example using the eigen library." ON)
+
+option(WITH_LIB_CLANG_LLVM "Build and link with clang and llvm" ON)
+option(WITH_LIB_CLANG_LLVM_EXAMPLE_BASIC "Build the basic example for libclang" ON)

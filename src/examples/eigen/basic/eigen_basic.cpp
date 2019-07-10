@@ -1,5 +1,5 @@
 /**
- * Simple Eigen example (taken from the "getting started" tutorial.
+ * Simple Eigen example (taken from the "getting started" tutorial).
  */
 
 

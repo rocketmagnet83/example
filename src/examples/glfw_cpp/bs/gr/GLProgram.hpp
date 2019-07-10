@@ -15,8 +15,6 @@ extern "C" {
 #include "GLShader.hpp"
 
 
-namespace bs {
-namespace sys {
 
 class GLProgram
 {
@@ -38,7 +36,5 @@ protected:
 
 }; /* class GLProgram */
 
-} /** namespace gr */
-} /** namepsace bs */
 
 #endif
