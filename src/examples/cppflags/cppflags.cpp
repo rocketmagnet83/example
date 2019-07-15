@@ -11,7 +11,7 @@ ALLOW_FLAGS_FOR_ENUM(MyEnum)
 
 int main() {
   auto mask1 = MyEnum::Button1 | MyEnum::Button2; // set flags Value1 and Value 2
-  if (mask1 & MyEnum::Value2) 
+  if (mask1 & MyEnum::Button1) 
   {
 	  std::cout << "Button1 - true" << std::endl;
   }
