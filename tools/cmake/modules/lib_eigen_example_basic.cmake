@@ -1,8 +1,8 @@
-if(NOT WITH_LIB_EIGEN)
-	message(FATAL_ERROR "Error: Try to build example WITH_LIB_EIGEN_EXAMPLE_BASIC without WITH_LIB_EIGEN")
-endif()
-
 if(WITH_LIB_EIGEN_EXAMPLE_BASIC)
+	if(NOT WITH_LIB_EIGEN)
+		message(FATAL_ERROR "Error: Try to build example WITH_LIB_EIGEN_EXAMPLE_BASIC without WITH_LIB_EIGEN")
+	endif()
+
 	message(STATUS "Building example WITH_LIB_EIGEN_EXAMPLE_BASIC")
 
 	set(LIB_EIGEN_EXAMPLE_BASIC_SRC

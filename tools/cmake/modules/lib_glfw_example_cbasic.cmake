@@ -1,11 +1,11 @@
-if(NOT WITH_LIB_GLAD)
-	message(FATAL_ERROR "Error: Try to build example WITH_LIB_GLFW_EXAMPLE_CBASIC without WITH_LIB_GLAD")
-endif()
-if(NOT WITH_LIB_GLFW)
-	message(FATAL_ERROR "Error: Try to build example WITH_LIB_GLFW_EXAMPLE_CBASIC without WITH_LIB_GLFW")
-endif()
-
 if(WITH_LIB_GLFW_EXAMPLE_CBASIC)
+	if(NOT WITH_LIB_GLAD)
+		message(FATAL_ERROR "Error: Try to build example WITH_LIB_GLFW_EXAMPLE_CBASIC without WITH_LIB_GLAD")
+	endif()
+	if(NOT WITH_LIB_GLFW)
+		message(FATAL_ERROR "Error: Try to build example WITH_LIB_GLFW_EXAMPLE_CBASIC without WITH_LIB_GLFW")
+	endif()
+
 	message(STATUS "Building example WITH_LIB_GLFW_EXAMPLE_CBASIC")
 
 	set(EXAMPLE_GLFW_EXAMPLE_CBASIC_CXX_OR_C
