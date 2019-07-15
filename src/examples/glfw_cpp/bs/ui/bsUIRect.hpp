@@ -56,7 +56,6 @@ public:
 private:
 
 protected:
-
     int m_x1,m_y1;
     int m_x2,m_y2;
 };

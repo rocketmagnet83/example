@@ -11,11 +11,14 @@ set(NLOHMANN_JSON_HASH 8a6dbf3bf01156f438d0ca7e78c2971bca50eec4ca6f0cf59adf3464c
 set(EIGEN_URL http://bitbucket.org/eigen/eigen/get/3.3.7.tar.bz2)
 set(EIGEN_HASH 05b1f7511c93980c385ebe11bd3c93fa)
 
+set(CPPFLAGS_REPO https://github.com/grisumbras/enum-flags.git)
+set(CPPFLAG_HASH 234d2097d31b1d8aece92fe97b00e7ab8da08a62)
+
+##########
+## TODO ##
+##########
 set(CLANG_LLVM_GIT https://github.com/llvm/llvm-project.git)
 set(CLANG_LLVM_HASH 15bd9f9d50d1759ca5bfdbb1482e2ecc0c6d567a)
-
-###
-###
 
 set(ZLIB_VERSION 1.2.11)
 set(ZLIB_URL https://zlib.net/zlib-${ZLIB_VERSION}.tar.gz)

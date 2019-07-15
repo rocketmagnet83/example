@@ -9,26 +9,33 @@ set(ALL_LIBS
 	glfw
 	nlohmann_json
 	eigen
+	cppflags
 )
 
 option(GENERATE_DOCS "Create the doxygen API documentation" ON)
 
 # WITH_LIB_GLAD
-option(WITH_LIB_GLAD "Build and link with the library GLAD" ON)
-option(WITH_LIB_GLAD_EXAMPLE_CBASIC "Build the basic Glad example (default:0)" ON)
+option(WITH_LIB_GLAD "Build and link with the library GLAD" OFF)
+option(WITH_LIB_GLAD_EXAMPLE_CBASIC "Build the basic Glad example (default:0)" OFF)
 
 # WITH_LIB_GLFW
-option(WITH_LIB_GLFW "Build and link with library GLFW" ON)
-option(WITH_LIB_GLFW_EXAMPLE_CBASIC "Build the basic GLFW C example (default:1)" ON)
-option(WITH_LIB_GLFW_EXAMPLE_CPPBASIC "Build the GLFW CPP wrapper class example (default:1)" ON)
+option(WITH_LIB_GLFW "Build and link with library GLFW" OFF)
+option(WITH_LIB_GLFW_EXAMPLE_CBASIC "Build the basic GLFW C example (default:1)" OFF)
+option(WITH_LIB_GLFW_EXAMPLE_CPPBASIC "Build the GLFW CPP wrapper class example (default:1)" OFF)
 
 # WITH_LIB_NLOHMANN_JSON
-option(WITH_LIB_NLOHMANN_JSON "Build and link with the library NLOHMANN_JSON" ON)
-option(WITH_LIB_NLOHMANN_JSON_EXAMPLE_BASIC "Buid a simple nlohmann_json example which is showing the most important features." ON)
+option(WITH_LIB_NLOHMANN_JSON "Build and link with the library NLOHMANN_JSON" OFF)
+option(WITH_LIB_NLOHMANN_JSON_EXAMPLE_BASIC "Buid a simple nlohmann_json example which is showing the most important features." OFF)
 
 # WITH_LIB_EIGEN
-option(WITH_LIB_EIGEN "Build and link with the Eigen library" ON)
-option(WITH_LIB_EIGEN_EXAMPLE_BASIC "Simple example using the eigen library." ON)
+option(WITH_LIB_EIGEN "Build and link with the Eigen library" OFF)
+option(WITH_LIB_EIGEN_EXAMPLE_BASIC "Simple example using the eigen library." OFF)
 
-option(WITH_LIB_CLANG_LLVM "Build and link with clang and llvm" ON)
-option(WITH_LIB_CLANG_LLVM_EXAMPLE_BASIC "Build the basic example for libclang" ON)
+# WITH_LIB_CPPFLAGS
+option(WITH_LIB_CPPFLAGS "Build and link with C++11 bitmasks library" ON)
+option(WITH_LIB_CPPFLAGS_EXAMPLE_BASIC "Simple example how to use C++11 bitmasks." ON)
+
+
+
+
+

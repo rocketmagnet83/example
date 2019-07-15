@@ -1,22 +1,22 @@
 
-#include "GLFWWrapper.hpp"
+#include "bsSystem.hpp"
 
 #include <iostream>
 
 
-bs::sys::GLFWWrapper* bs::sys::GLFWWrapper::m_instance = nullptr;
+bsSystem* bsSystem::m_instance = nullptr;
 
 
-bs::sys::GLFWWrapper::GLFWWrapper()
+bsSystem::bsSystem()
 {}
 
-bs::sys::GLFWWrapper::~GLFWWrapper()
+bsSystem::~bsSystem()
 {}
 
 /**
- * Function called to initalize the GLFWWrapper.
+ * Function called to initalize the bsSystem.
  */
-void bs::sys::GLFWWrapper::init(bs::sys::GLFWWrapper *instance)
+void bsSystem::create(bsSystem *instance)
 {
 	m_instance = instance;
 
@@ -43,7 +43,7 @@ void bs::sys::GLFWWrapper::init(bs::sys::GLFWWrapper *instance)
 
 	m_timerFrequency = glfwGetTimerFrequency();
 
-	createMainWindow(bs::sys::config["bs"]["gr"]["widht"], bs::sys::config["bs"]["gr"]["height"], bs::sys::config["bs"]["gr"]["bpp"]);
+	createMainWindow(bsSystem::config["bs"]["gr"]["width"], bsSystem::config["bs"]["gr"]["height"], bs::sys::config["bs"]["gr"]["bpp"]);
 
 	getVersion();
 	getSettings();
@@ -55,7 +55,7 @@ void bs::sys::GLFWWrapper::init(bs::sys::GLFWWrapper *instance)
  * Function called when the application terminates, free all used memory and restore system settings
  * (like the graphic mode).
  */
-void bs::sys::GLFWWrapper::exit()
+void bsSystem::destroy()
 {
 	/** Shutdown GLFW */
 	if(m_isInit)
@@ -73,17 +73,16 @@ void bs::sys::GLFWWrapper::exit()
 /**
  * Get information about all available monitors.
  */
-void bs::sys::GLFWWrapper::getSettings()
+void bsSystem::getSettings()
 {
 #ifdef WITH_DEBUG
-	std::cout << "GLFWWrapper::getSettings()" << std::endl;
+	std::cout << "bsSystem::getSettings()" << std::endl;
 #endif
 	int count;
 	int i;
 
-
-	GLFWMonitor *monitor = new bs::sys::GLFWMonitor;
-	GLFWmonitor **monitors = glfwGetMonitors(&count);
+	bsMonitor *monitor = new bsMonitor;
+	bsMonitor **monitors = glfwGetMonitors(&count);
 	
 	/*
 	for(i=0; i<count; i++)
@@ -101,7 +100,7 @@ void bs::sys::GLFWWrapper::getSettings()
 /**
  * Get the GLFW version.
  */
-void bs::sys::GLFWWrapper::getVersion()
+void bsSystem::getVersion()
 {
 	/** Get the version of the GLFW library */
 	glfwGetVersion(
@@ -122,7 +121,7 @@ void bs::sys::GLFWWrapper::getVersion()
 
 
 
-int createMainWindow(int width, int heght)
+int bsSystem::createMainWindow(int width, int heght)
 {
 
 
@@ -142,7 +141,7 @@ int createMainWindow(int width, int heght)
  * \param code The error code.
  * \param msg The error message.
  */
-void bs::sys::GLFWWrapper::glfw_ErrorHandler(int code, const char *msg)
+void bsSystem::glfw_ErrorHandler(int code, const char *msg)
 {
 	m_instance->onError(code, msg);
 }
@@ -152,7 +151,7 @@ void bs::sys::GLFWWrapper::glfw_ErrorHandler(int code, const char *msg)
  * \param monitor The monitor that was tunred on or off.
  * \param event Either GLFW_CONNECTED or GLFW_DISCONNECTED.
  */
-void bs::sys::GLFWWrapper::glfw_MonitorHandler(GLFWmonitor *monitor, int event)
+void bsSystem::glfw_MonitorHandler(GLFWmonitor *monitor, int event)
 {
 	m_instance->onMonitorChange(monitor, event);
 }
@@ -161,7 +160,7 @@ void bs::sys::GLFWWrapper::glfw_MonitorHandler(GLFWmonitor *monitor, int event)
  * Redirect to onRedrawWindow().
  * \param monitor The monitor to redraw.
  */
-void bs::sys::GLFWWrapper::glfw_RedrawWindow(GLFWmonitor *monitor)
+void bsSystem::glfw_RedrawWindow(GLFWmonitor *monitor)
 {
 	m_instance->onRedrawWindow(monitor);
 }

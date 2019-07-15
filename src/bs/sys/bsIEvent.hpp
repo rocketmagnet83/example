@@ -41,7 +41,7 @@ public:
 	 * Returns the time this event was generated.
 	 * \return The event generation time.
 	 */
-	virtual TUns64 getTime() = 0;
+	virtual uint64 getTime() = 0;
 
 	/**
 	 * Returns the window this event was generated on,
@@ -56,9 +56,6 @@ public:
 	 */
 	virtual TEventDataPtr getData() = 0;
 
-#ifdef WITH_CXX_GUARDEDALLOC
-	MEM_CXX_CLASS_ALLOC_FUNCS("GHOST:IEvent")
-#endif
 };
 
 #endif // __BS_SYS_IEVENT_HEADER__

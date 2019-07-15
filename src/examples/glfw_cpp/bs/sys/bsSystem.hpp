@@ -1,5 +1,5 @@
-#ifndef BS_APP_GLFWWRAPPER_HPP
-#define BS_APP_GLFWWRAPPER_HPP
+#ifndef BS_SYS_SYSTEM_HPP
+#define BS_SYS_SYSTEM_HPP
 
 #include <nlohmann/json.hpp>
 
@@ -13,65 +13,20 @@ extern "C" {
 #include <string>
 #include <vector>
 
+#include "bsBaseTypes.hpp"
+#include "bsSystemTypes.hpp"
 
-nlohmann::json default_config = 
+
+
+nlohmann::json config = 
 {"bs", 
 	{"gr", {
-		"width", 800,
-		"height", 1024,
+		"width", 1024,
+		"height", 768,
 		"bpp", 24,
-		"title", "GLFWWrapper version 0.1"
+		"title", "bsSystem example"
    },
 },
-};
-
-/**
- * Error code and message from the GLFW library.
- */
-struct SystemError
-{
-	int code;
-	std::string msg;
-};
-
-/**
- * Version information for the GLFW library.
- */
-struct SystemVersion
-{
-	int glfwMajorVersion;				/** The GLFW major version */
-	int glfwMinorVersion;				/** The GLFW minor version */
-	int glfwRevisionVersion;			/** The GLFW revision version */
-	std::string glfwVersionString;		/** The GLFW version string */
-};
-
-
-/**
- * Description of a monitor.
- */
-
-/**
- * Detailed description of a video mode of a window.
- */
-struct WindowDetails
-{
-	std::string title;
-	int width, height;
-	int redBits, greenBits, BlueBits;
-	int refreshrate;
-	Monitor *monitor;
-};
-
-/**
- * Monitor definition.
- */
-struct Monitor
-{
-	std::string name;								/** The name of the monitor */
-	int pys_width, pys_height;						/** The physical size of the monitor */
-	int posx, posy;									/** The position of the monitor */
-	float gamma;									/** The gamma value of the monitor */
-	std::vector<GLFWvidmode*> vecResolutions;		/** All available resolutions for the monitor */
 };
 
 
@@ -82,67 +37,62 @@ struct Monitor
  * GLFW C++ wrapper class.
  * You must inherit this class and overwrite the methods to work with the GLFW C-API.
  */
-class GLFWWrapper {
+class bsSystem {
 public:
-    GLFWWrapper();
-    virtual ~GLFWWrapper();
+    bsSystem();
+    ~bsSystem();
 
-	virtual void init(GLFWWrapper *instance);
-    virtual void exit();
+	void create(bsSystem *instance);
+    void destroy();
 
 	virtual void run();
 
 	int createMainWindow(int width, int height);
-	int getMonitor(Monitor &monitor);
-	void setWindowIcon(Window *window, int count, const GLFWimage *images);
-	int addWindow(Window *window);
-	int delWindow(Window *window);
+	void setWindowIcon(bsWindow *window, int count, const GLFWimage *images);
+	int addWindow(bsWindow *window);
+	int delWindow(bsWindow *window);
+	
+	int getMonitor(bsMonitor &monitor);
 	
 	uint64_t getTime();
 
 private:
 
-	/**
-	 * General GLFW functions
-	 */
 
+    void onInit();				/** called as last from ::init() */
+	void onShutDown();			/** called on last from ::exit() */
+	
+	void getSettings();			/** Get the GLFW settings (like how many monitors, resolutions,
+								 etc. */
+	void getVersion();			/** Get the version of the GLFW library. */
 
+protected:
 	/**
 	 * GLFW C++ callback functions.
 	 */
-    virtual void onInit();				/** called as last from ::init() */
-	virtual void onShutDown();			/** called on last from ::exit() */
+    void onError(int code, const char *msg);
+	void onMonitorChange(GLFWmonitor *monitor, int event);
+	void onRedrawWindow(GLFWmonitor *monitor);
+	void onWindowIconify(GLFWwindow *window);
 
-    virtual void onError(int code, const char *msg);
-	virtual void onMonitorChange(GLFWmonitor *monitor, int event);
-	virtual void onRedrawWindow(GLFWmonitor *monitor);
-	virtual void onWindowIconify(GLFWwindow *window);
+    void onResizeWindow(GLFWwindow *wnd, int width, int height);
+    void onKeyUp(GLFWwindow *wnd, int key, int scancode, int action);
+    void onKeyDown(GLFWwindow *wnd, int key, int scancode, int action);
+	void onMouseDragBegin(GLFWwindow *wnd, int &startx, int &starty);
+	void onMouseDragEnd(GLFWwindow *wnd, int &endx, int &endy);
+    void onMouseMove(GLFWwindow *wnd, int x, int y);
+    void onMouseWheel(GLFWwindow *wnd, int scroll);
+    void onDraw(GLFWwindow *wnd);
+    void onProceed();
 
-
-    virtual void onResizeWindow(GLFWwindow *wnd, int width, int height);
-    virtual void onKeyUp(GLFWwindow *wnd, int key, int scancode, int action);
-    virtual void onKeyDown(GLFWwindow *wnd, int key, int scancode, int action);
-	virtual void onMouseDragBegin(GLFWwindow *wnd, int &startx, int &starty);
-	virtual void onMouseDragEnd(GLFWwindow *wnd, int &endx, int &endy);
-    virtual void onMouseMove(GLFWwindow *wnd, int x, int y);
-    virtual void onMouseWheel(GLFWwindow *wnd, int scroll);
-    virtual void onDraw(GLFWwindow *wnd);
-    virtual void onProceed();
-
-	
-protected:
-    static GLFWWrapper *m_instance;					/** Static instance of the wrapper class. */
-
-
+    static bsSystem *m_instance;						/** Static instance of the wrapper class. */
 	bool			m_isInit;							/** Is the library successfully initalized ? */
-	SystemVersion	m_version;							/** The version of the GLFW library in use. */
-	SystemError		m_lastError;						/** The last GLFW error occoured. */
-	uint64_t		m_timerFrequency;					/** Frequency of the timer function */
+	bsGLFWVersion	m_version;							/** The version of the GLFW library in use. */
+	bsSystemError	m_lastError;						/** The last GLFW error occoured. */
+	uint64			m_timerFrequency;					/** Frequency of the timer function */
 
-	std::vector<Monitor*> m_vecMonitors;				/** A vector with all monitors available. */
+	std::vector<bsMonitor*> m_vecMonitors;				/** A vector with all monitors available. */
 
-	void getSettings();
-	void getVersion();
 
     /***********************************************************************************************
      * GLFW callback functions.
