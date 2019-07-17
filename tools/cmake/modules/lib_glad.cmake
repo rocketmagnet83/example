@@ -1,4 +1,3 @@
-
 IF(WITH_LIB_GLAD)
 	message(STATUS "Included lib_glad.cmake.")
 	###################

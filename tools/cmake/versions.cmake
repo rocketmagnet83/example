@@ -14,6 +14,18 @@ set(EIGEN_HASH 05b1f7511c93980c385ebe11bd3c93fa)
 set(CPPFLAGS_REPO https://github.com/grisumbras/enum-flags.git)
 set(CPPFLAG_HASH 234d2097d31b1d8aece92fe97b00e7ab8da08a62)
 
+set(PYTHON_VERSION 3.7.3)
+set(PYTHON_URL https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tar.xz)
+set(PYTHON_HASH 93df27aec0cd18d6d42173e601ffbbfd)
+
+#----
+
+set(BOOST_VERSION 1.68.0)
+set(BOOST_VERSION_NODOTS 1_68_0)
+set(BOOST_URL https://dl.bintray.com/boostorg/release/${BOOST_VERSION}/source/boost_${BOOST_VERSION_NODOTS}.tar.gz)
+set(BOOST_HASH 5d8b4503582fffa9eefdb9045359c239)
+
+
 ##########
 ## TODO ##
 ##########
@@ -47,13 +59,6 @@ set(STB_IMAGE_WRITE_REPO https://raw.githubusercontent.com/nothings/stb/master/s
 set(STB_IMAGE_WRITE_TAG master)
 set(STB_IMAGE_WRITE_HASH 0e8b3d80bc6eb8fdb64abc4db9fec608b489bc73418eaf14beda102a0699a4c9)
 
-set(PYTHON_VERSION 3.7.3)
-set(PYTHON_URL https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz)
-
-set(BOOST_VERSION 1.68.0)
-set(BOOST_VERSION_NODOTS 1_68_0)
-set(BOOST_URL https://dl.bintray.com/boostorg/release/${BOOST_VERSION}/source/boost_${BOOST_VERSION_NODOTS}.tar.gz)
-set(BOOST_HASH 5d8b4503582fffa9eefdb9045359c239)
 
 set(FREETYPE_REPO https://github.com/brooklynpacket/freetype2.git)
 set(FREETYPE_TAG 4e653f8dced3795f6f9a0495da34ce3dcdeba970)
@@ -83,12 +88,6 @@ set(ICONV_HASH ace8b5f2db42f7b3b3057585e80d9808)
 set(OGG_VERSION 1.3.3)
 set(OGG_URI http://downloads.xiph.org/releases/ogg/libogg-${OGG_VERSION}.tar.gz)
 set(OGG_HASH c2e8a485110b97550f453226ec644ebac6cb29d1caef2902c007edab4308d985)
-
-set(PYTHON_VERSION 3.7.0)
-set(PYTHON_SHORT_VERSION 3.7)
-set(PYTHON_SHORT_VERSION_NO_DOTS 37)
-set(PYTHON_URI https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tar.xz)
-set(PYTHON_HASH eb8c2a6b1447d50813c02714af4681f3)
 
 set(PTHREADS_VERSION 3.0.0)
 set(PTHREADS_URI http://sourceforge.mirrorservice.org/p/pt/pthreads4w/pthreads4w-code-v${PTHREADS_VERSION}.zip)

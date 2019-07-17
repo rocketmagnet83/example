@@ -1,5 +1,4 @@
 if(WITH_LIB_GLAD_EXAMPLE_CBASIC)
-
 	if(NOT WITH_LIB_GLAD)
 		message(FATAL_ERROR "Try to build example WITH_LIB_GLAD_EXAMPLE_CBASIC without WITH_LIB_GLAD")
 	endif()

@@ -6,59 +6,22 @@
 //#include "bsUltimate.hpp"
 
 
-#include "bs/sys/GLFWWrapper.hpp"
+#include "bs/sys/bsSystem.hpp"
 #include <iostream>
 
 
-class System : public GLFWWrapper
+class TestApplication
 {
 public:
-    System()
-    {}
 
-    ~System()
-    {}
+private:
 
-	/**
-	 * Called after the ::init() function has finished 
-	 */
-    void onInit()
-    {
-#ifdef WITH_DEBUG
-		std::cout << "onInit();" << std::endl;
-#endif
-		std::cout << "Welcome"; 
-
-
-//        wnd->setLayout(new GridLayout());
-//        auto button = wnd->add(new bsUINodeButton("Press Me"));
-//        button->setSignalHandler(this->handleQuitButton);
-    
-	}
-
-	/** 
-	 * called every 
-	 * frame 
-	 **/
-	void onProceed()
-	{
-		std::cout << "Welcome";
-	}
-
-	/**
-	 * Main event loop.
-	 */
-	void run()
-	{
-		std::cout << "System::run();" << std::endl;
-
-
-	}
-
+protected:
 
 };
 
-/** Start init and run application */
+
+
 
 
 MAIN_RUNAPP(System)

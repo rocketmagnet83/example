@@ -10,6 +10,7 @@ set(ALL_LIBS
 	nlohmann_json
 	eigen
 	cppflags
+	python
 )
 
 option(GENERATE_DOCS "Create the doxygen API documentation" ON)
@@ -32,10 +33,10 @@ option(WITH_LIB_EIGEN "Build and link with the Eigen library" OFF)
 option(WITH_LIB_EIGEN_EXAMPLE_BASIC "Simple example using the eigen library." OFF)
 
 # WITH_LIB_CPPFLAGS
-option(WITH_LIB_CPPFLAGS "Build and link with C++11 bitmasks library" ON)
-option(WITH_LIB_CPPFLAGS_EXAMPLE_BASIC "Simple example how to use C++11 bitmasks." ON)
+option(WITH_LIB_CPPFLAGS "Build and link with C++11 bitmasks library" OFF)
+option(WITH_LIB_CPPFLAGS_EXAMPLE_BASIC "Simple example how to use C++11 bitmasks." OFF)
 
 
-
-
+option(WITH_LIB_PYTHON "Build with Python library" ON)
+option(WITH_LIB_PYTHON_EXAMPLE_BASIC "Simple Python embeding example" ON)
 

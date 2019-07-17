@@ -24,6 +24,7 @@ BASE_FLAGS = [
         '-I','/home/stuv/projects/programming/bsEdit/out/Release/libs/python/include/',
         '-I','/home/stuv/projects/programming/bsEdit/out/Release/libs/eigen/include/eigen3/',
         '-I','/home/stuv/projects/programming/bsEdit/out/Release/libs/cppflags/include/',
+        '-I','/home/stuv/projects/programming/bsEdit/out/Release/libs/python/include/python3.7m/',
         '-I','/usr/include/mate-panel-4.0/libmate-panel-applet',
         '-I','/usr/include/gtk-3.0/',
         '-I','/usr/include/glib-2.0/',
