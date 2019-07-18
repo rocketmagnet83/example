@@ -1,0 +1,11 @@
+--- project-config.jam	2019-07-18 15:22:02.540680864 +0200
++++ project-config.jam	2019-07-18 15:22:26.000666417 +0200
+@@ -18,7 +18,7 @@
+ import python ;
+ if ! [ python.configured ]
+ {
+-    using python : 2.7 : /usr ;
++    using python : 3.7 : /usr ;
+ }
+ 
+ path-constant ICU_PATH : /usr ;

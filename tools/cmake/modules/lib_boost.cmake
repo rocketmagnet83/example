@@ -11,10 +11,12 @@ if(WITH_LIB_BOOST)
 		URL ${BOOST_URL}
 		DOWNLOAD_DIR ${CMAKE_BINARY_DIR}/boost
 		URL_HASH MD5=${BOOST_HASH}
-		CONFIGURE_COMMAND cd ${CMAKE_BINARY_DIR}/boost/src/external_boost/ && ./bootstrap.sh --exec-prefix=${OUTPUT_PATH}/libs/boost/bin --libdir=${OUTPUT_PATH}/libs/boost/lib --includedir=${OUTPUT_PATH}/libs/boost/include
-	BUILD_COMMAND cd ${CMAKE_BINARY_DIR}/boost/src/external_boost/ && ./b2
+		#		PATCH_COMMAND cd ${CMAKE_BINARY_DIR}/boost/src/external_boost/ && patch project-config.jam ${CMAKE_SOURCE_DIR}/tools/patches/boost_python3.7.patch
+		CONFIGURE_COMMAND cd ${CMAKE_BINARY_DIR}/boost/src/external_boost/ && 
+		./bootstrap.sh --prefix=${OUTPUT_PATH}/libs/boost/ --with-libraries=python --with-python=${CMAKE_BINARY_DIR}/libs/python/python3.7 --with-python-root=${CMAKE_BINARY_DIR}/libs/python --with-python-version=3.7
+		BUILD_COMMAND cd ${CMAKE_BINARY_DIR}/boost/src/external_boost/ && 
+					  ./b2
 		INSTALL_COMMAND cd ${CMAKE_BINARY_DIR}/boost/src/external_boost/ && ./bjam && ./bjam install
-		INSTALL_DIR ${OUTPUT_PATH}/boost
 	)
 
 endif()
