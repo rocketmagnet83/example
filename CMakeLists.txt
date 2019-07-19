@@ -86,7 +86,7 @@ ELSEIF(APPLE)
 ENDIF()
 
 
-
+set(CMAKE_PREFIX_PATH CACHE STRING ${OUTPUT_PATH})
 
 #####################################################
 ## These are the settings for the main appliaction ##

@@ -26,7 +26,7 @@ int main(int argc, char **argv)
     }
     Py_SetProgramName(program);  /* optional but recommended */
     Py_Initialize();
-    PyRun_SimpleString("import hello_ext\print(hello_ext.greet())\n");
+    PyRun_SimpleString("import hello_ext;print(hello_ext.greet())\n");
 
     if (Py_FinalizeEx() < 0) {
         exit(120);

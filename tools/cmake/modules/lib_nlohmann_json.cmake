@@ -1,6 +1,6 @@
 IF(WITH_LIB_NLOHMANN_JSON)
 	set(LIB_NLOHMANN_JSON_INC_PATH
-        ${OUTPUT_PATH}/libs/nlohmann_json/include/
+        ${OUTPUT_PATH}/lib/nlohmann_json/include/
     )
 
 	set(LIB_NLOHMANN_JSON_STATIC_LIBS ${PLATFORM_LIBS})
@@ -20,7 +20,7 @@ IF(WITH_LIB_NLOHMANN_JSON)
 		DOWNLOAD_NO_EXTRACT 1
 		CONFIGURE_COMMAND ""
 		BUILD_COMMAND ""
-		INSTALL_COMMAND COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/nlohmann_json/json.hpp ${OUTPUT_PATH}/libs/nlohmann_json/include/nlohmann/json.hpp
+		INSTALL_COMMAND COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/nlohmann_json/json.hpp ${OUTPUT_PATH}/lib/nlohmann_json/include/nlohmann/json.hpp
 	)
 
 ENDIF()

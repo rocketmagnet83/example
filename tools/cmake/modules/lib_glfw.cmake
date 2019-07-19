@@ -6,16 +6,16 @@ if(WITH_LIB_GLFW)
 
     set(LIB_GLFW_INC_PATH
 		${PLATFORM_INC_PATH}
-        ${OUTPUT_PATH}/libs/glad/include
-		${OUTPUT_PATH}/libs/glfw3/include
+        ${OUTPUT_PATH}/lib/glad/include
+		${OUTPUT_PATH}/lib/glfw3/include
 		${OPENGL_INCLUDE_DIR}
 		${X11_INCLUDE_DIR}
     )
 
     set(LIB_GLFW_LIB_PATH
 		${PLATFORM_LIB_PATH}
-		${OUTPUT_PATH}/libs/glad/lib
-		${OUTPUT_PATH}/libs/glfw3/lib
+		${OUTPUT_PATH}/lib/glad/lib
+		${OUTPUT_PATH}/lib/glfw3/lib
 		${OPENGL_LIBRARIES}
 		${X11_LIBRARIES}
     )
@@ -47,9 +47,9 @@ if(WITH_LIB_GLFW)
 		GIT_TAG ${GLFW_TAG}
 		GIT_PROGRESS true
 		GIT_SHALLOW True
-		CMAKE_ARGS -DCMAKE_BUILD_TYPE:String=${CMAKE_BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=${OUTPUT_PATH}/libs/glfw3
-		INSTALL_COMMAND COMMAND
-			${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/glfw3/src/external_glfw3/deps/linmath.h ${OUTPUT_PATH}/libs/glfw3/include/linmath.h &&
+		CMAKE_ARGS -DCMAKE_BUILD_TYPE:String=${CMAKE_BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=${OUTPUT_PATH}/lib/glfw3
+		INSTALL_COMMAND 
+			${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/glfw3/src/external_glfw3/deps/linmath.h ${OUTPUT_PATH}/lib/glfw3/include/linmath.h &&
 			make -j${CPU_COUNT} install
 	)
 

@@ -17,12 +17,12 @@ set(ALL_LIBS
 option(GENERATE_DOCS "Create the doxygen API documentation" ON)
 
 # WITH_LIB_GLAD
-option(WITH_LIB_GLAD "Build and link with the library GLAD" OFF)
-option(WITH_LIB_GLAD_EXAMPLE_CBASIC "Build the basic Glad example (default:0)" OFF)
+option(WITH_LIB_GLAD "Build and link with the library GLAD" ON)
+option(WITH_LIB_GLAD_EXAMPLE_CBASIC "Build the basic Glad example (default:0)" ON)
 
 # WITH_LIB_GLFW
-option(WITH_LIB_GLFW "Build and link with library GLFW" OFF)
-option(WITH_LIB_GLFW_EXAMPLE_CBASIC "Build the basic GLFW C example (default:1)" OFF)
+option(WITH_LIB_GLFW "Build and link with library GLFW" ON)
+option(WITH_LIB_GLFW_EXAMPLE_CBASIC "Build the basic GLFW C example (default:1)" ON)
 option(WITH_LIB_GLFW_EXAMPLE_CPPBASIC "Build the GLFW CPP wrapper class example (default:1)" OFF)
 
 # WITH_LIB_NLOHMANN_JSON
