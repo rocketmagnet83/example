@@ -7,7 +7,7 @@ if(WITH_LIB_BOOST_EXAMPLE_PYTHON)
 		message(FATAL_ERROR "Error: Try to build example WITH_LIB_BOOST_EXAMPLE_PYTHON without WITH_LIB_PYTHON")
 	endif()
 
-	message(STATUS "Building example WITH_LIB_BOOST_EXAMPLE_PYTHOn")
+	message(STATUS "Building example WITH_LIB_BOOST_EXAMPLE_PYTHON")
 
 	set(LIB_BOOST_EXAMPLE_PYTHON_SRC
         ${CMAKE_SOURCE_DIR}/src/examples/boost/python/boost_python.cpp

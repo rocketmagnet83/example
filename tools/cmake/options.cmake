@@ -30,13 +30,12 @@ option(WITH_LIB_CPPFLAGS "Build and link with C++11 bitmasks library" OFF)
 option(WITH_LIB_CPPFLAGS_EXAMPLE_BASIC "Simple example how to use C++11 bitmasks." OFF)
 
 # WITH_LIB_PYTHON
-option(WITH_LIB_PYTHON "Build with Python library" OFF)
-option(WITH_LIB_PYTHON_EXAMPLE_BASIC "Simple Python embeding example" OFF)
+option(WITH_LIB_PYTHON "Build with Python library" ON)
+option(WITH_LIB_PYTHON_EXAMPLE_BASIC "Simple Python embeding example" ON)
 
 # WITH_LIB_BOOST
-option(WITH_LIB_BOOST "Build with Boost library" OFF)
-option(WITH_LIB_BOOST_EXAMPLE_PYTHON "Simple BOOST::Python example" OFF)
+option(WITH_LIB_BOOST "Build with Boost library" ON)
+option(WITH_LIB_BOOST_EXAMPLE_PYTHON "Simple BOOST::Python example" ON)
 set(WITH_LIB_BOOST_DEPENDS python)
 
 bsGetLibsToBuild(${LIBS_TO_BUILD})
-
