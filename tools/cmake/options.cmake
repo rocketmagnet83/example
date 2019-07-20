@@ -22,12 +22,12 @@ option(WITH_LIB_NLOHMANN_JSON "Build and link with the library NLOHMANN_JSON" OF
 option(WITH_LIB_NLOHMANN_JSON_EXAMPLE_BASIC "Buid a simple nlohmann_json example which is showing the most important features." OFF)
 
 # WITH_LIB_EIGEN
-option(WITH_LIB_EIGEN "Build and link with the Eigen library" OFF)
-option(WITH_LIB_EIGEN_EXAMPLE_BASIC "Simple example using the eigen library." OFF)
+option(WITH_LIB_EIGEN "Build and link with the Eigen library" ON)
+option(WITH_LIB_EIGEN_EXAMPLE_BASIC "Simple example using the eigen library." ON)
 
 # WITH_LIB_CPPFLAGS
-option(WITH_LIB_CPPFLAGS "Build and link with C++11 bitmasks library" OFF)
-option(WITH_LIB_CPPFLAGS_EXAMPLE_BASIC "Simple example how to use C++11 bitmasks." OFF)
+option(WITH_LIB_CPPFLAGS "Build and link with C++11 bitmasks library" ON)
+option(WITH_LIB_CPPFLAGS_EXAMPLE_BASIC "Simple example how to use C++11 bitmasks." ON)
 
 # WITH_LIB_PYTHON
 option(WITH_LIB_PYTHON "Build with Python library" ON)

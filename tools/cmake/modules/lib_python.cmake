@@ -1,7 +1,7 @@
 if(WITH_LIB_PYTHON)
 	message(STATUS "Use library WITH_LIB_PYTHON.")
 
-	set(LIB_PYTHON_INC_PATH ${OUTPUT_PATH}/lib/python/include/python3.7m/)
+	set(LIB_PYTHON_INC_PATH ${OUTPUT_PATH}/lib/python/include/python3.7m)
 	set(LIB_PYTHON_LIB_PATH ${OUTPUT_PATH}/lib/python/bin)
 	set(LIB_PYTHON_STATIC_LIBS python3.7m)
 	set(LIB_PYTHON_DEPS external_python)

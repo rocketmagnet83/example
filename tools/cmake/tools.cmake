@@ -45,16 +45,30 @@ macro(bsGetLibExamples)
 endmacro()
 
 macro(bsGetLibsToBuild)
-	set(LIBS_TO_BUILD "")
+	message(STATUS "___ bsGetLibsToBuild ___")
+	set(LIBS_TO_BUILD_UN "")
 	get_cmake_property(_vars VARIABLES)
+
 	foreach(_var ${_vars})
 		if(_var MATCHES "^WITH_LIB_([^_]+)$")
 			if(WITH_LIB_${CMAKE_MATCH_1})
 				string(TOLOWER ${CMAKE_MATCH_1} lib_lower)
-				list(APPEND LIBS_TO_BUILD ${lib_lower})
+				list(APPEND LIBS_TO_BUILD_UN ${lib_lower})
 			endif()
 		endif()
 	endforeach()
+
+	foreach(_var ${LIBS_TO_BUILD_UN})
+		string(TOUPPER ${_var} _var_upper)
+        # this should match WITH_LIB_BOOST_DEPENDS for example
+        foreach(lib ${WITH_LIB_${_var_upper}_DEPENDS})
+            list(APPEND LIBS_TO_BUILD ${lib})
+            list(APPEND LIBS_TO_BUILD ${_var})
+        endforeach()
+        list(APPEND LIBS_TO_BUILD ${_var})
+    endforeach()
+    list(REMOVE_DUPLICATES LIBS_TO_BUILD)
+	message(STATUS "LIBS_TO_BULD=${LIBS_TO_BUILD}")
 endmacro()
 
 ###########################
