@@ -7,7 +7,6 @@ IF(WITH_LIB_GLAD)
 	find_package(X11 REQUIRED)
 	find_package(Threads REQUIRED)
 
-
 	set(LIB_GLAD_INC_PATH
 		${PLATFORM_INC_PATH}
 		${X11_INCLUDE_DIR}

@@ -1,10 +1,16 @@
 #################
 ## bsBuildLibs ##
 #################
-macro(bsBuildLibs)
+macro(bsBuildExternalProjects)
 	foreach(lib ${ARGN})
 		bsIncludeLib(${lib})
 		bsGetLibExamples(${lib})
+		bsBuildExamples(${lib})
+	endforeach()
+endmacro()
+
+macro(bsBuildExamples)
+	foreach(lib ${ARGN})
 		bsIncludeLibExamples(${lib})
 	endforeach()
 endmacro()
@@ -13,6 +19,7 @@ endmacro()
 ## bsIncludeLib ##
 ##################
 macro(bsIncludeLib)
+	message(STATUS "---> bsIncludeLib")
 	set(fn "${CMAKE_SOURCE_DIR}/tools/cmake/modules/lib_${ARGV0}.cmake")
 	if(EXISTS ${fn})
 		include(lib_${ARGV0})
@@ -37,6 +44,19 @@ macro(bsGetLibExamples)
 	endforeach()
 endmacro()
 
+macro(bsGetLibsToBuild)
+	set(LIBS_TO_BUILD "")
+	get_cmake_property(_vars VARIABLES)
+	foreach(_var ${_vars})
+		if(_var MATCHES "^WITH_LIB_([^_]+)$")
+			if(WITH_LIB_${CMAKE_MATCH_1})
+				string(TOLOWER ${CMAKE_MATCH_1} lib_lower)
+				list(APPEND LIBS_TO_BUILD ${lib_lower})
+			endif()
+		endif()
+	endforeach()
+endmacro()
+
 ###########################
 ## bsIncludeLibsExamples ##
 ###########################
@@ -49,7 +69,6 @@ macro(bsIncludeLibExamples)
 				set(fn "${CMAKE_SOURCE_DIR}/tools/cmake/modules/lib_${lib}_example_${example_lower}.cmake")
 				set(lib_name "lib_${lib}_example_${example_lower}")
 				if(EXISTS ${fn})
-					#	message(STATUS "Bulding lib ${lib}, example: ${example}")
 					include(${lib_name})
 				else()
 					message(FATAL_ERROR "Could not find example file ${fn} for library ${lib} and (example: ${example_lower})!")
