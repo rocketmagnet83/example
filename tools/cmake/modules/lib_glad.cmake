@@ -7,6 +7,9 @@ IF(WITH_LIB_GLAD)
 	find_package(X11 REQUIRED)
 	find_package(Threads REQUIRED)
 
+	set(CMAKE_INSTALL_PREFIX ${OUTPUT_PATH})
+	find_package(glad REQUIRED)
+
 	set(LIB_GLAD_INC_PATH
 		${PLATFORM_INC_PATH}
 		${X11_INCLUDE_DIR}
@@ -36,7 +39,6 @@ IF(WITH_LIB_GLAD)
 	)
 
 	set(LIB_GLAD_DEPS "external_glad")
-
 	
 	ExternalProject_Add(external_glad
 		PREFIX ${CMAKE_BINARY_DIR}/glad

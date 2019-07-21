@@ -38,6 +38,12 @@ set(BSEDIT_CXX_COMPILER g++)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/../tools/cmake/)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/../tools/cmake/modules)
 
+###############################
+## Set path for find_package ##
+###############################
+list(APPEND CMAKE_INSTALL_PREFIX ${OUTPUT_PATH})
+
+
 include(tools)
 include(versions)
 include(options)

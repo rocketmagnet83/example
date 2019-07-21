@@ -1,8 +1,8 @@
 
-#include "uiRect.hpp"
+#include "bsUIRect.hpp"
 
 
-uiRect::uiRect(int x1, int y1, int x2, int y2)
+bsUIRect::bsUIRect(int x1, int y1, int x2, int y2)
 {
     /** make sure the rectangle is aligned right x1,y1 is left top of the rectangle */
     if(x1>y2) y2=x2;
@@ -20,7 +20,7 @@ uiRect::uiRect(int x1, int y1, int x2, int y2)
  * \param posx The new upper left x position of the rectangle.
  * \param posy The new upper left y position of the rectangle.
  */
-void uiRect::setPos(int posx, int posy)
+void bsUIRect::setPos(int posx, int posy)
 {
     
 }
@@ -30,7 +30,7 @@ void uiRect::setPos(int posx, int posy)
  * \param posx The upper left x position.
  * \param posy The upper left y position.
  */
-void uiRect::getPos(int &posx, int &posy) const
+void bsUIRect::getPos(int &posx, int &posy) const
 {
 }
 
@@ -39,12 +39,12 @@ void uiRect::getPos(int &posx, int &posy) const
  * \param posx The width of the rectangle.
  * \param posy The height of the rectangle.
  */
-void uiRect::setWidth(int width)
+void bsUIRect::setWidth(int width)
 {
  
 }
 
-void uiRect::getWidth(int &width) const
+void bsUIRect::getWidth(int &width) const
 {
     width = m_x2-m_y1;
 }
@@ -54,14 +54,14 @@ void uiRect::getWidth(int &width) const
  * \param posx The width of the rectangle.
  * \param posy The height of the rectangle.
  */
-void uiRect::setHeight(int height) const
+void bsUIRect::setHeight(int &height)
 {
     height = m_x2-m_x1;
 }
 
 
 
-void uiRect::getHeight(int &height) const
+void bsUIRect::getHeight(int &height) const
 {
     height = m_y2-m_y1;
 }

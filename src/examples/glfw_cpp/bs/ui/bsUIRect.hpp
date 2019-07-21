@@ -9,11 +9,11 @@
  *
  * A simple rectangle, parent class for bsUINode.
  */
-class uiRect
+class bsUIRect
 {
 public:
-    uiRect(int x1, int y1, int x2, int y2);
-    ~uiRect();
+    bsUIRect(int x1, int y1, int x2, int y2);
+    ~bsUIRect();
 
     /**
      * Set the position of the rectangle.

@@ -70,11 +70,6 @@ ELSEIF(APPLE)
 	include(platform_apple)
 ENDIF()
 
-###############################
-## Set path for find_package ##
-###############################
-set(CMAKE_PREFIX_PATH CACHE STRING ${OUTPUT_PATH})
-
 
 bsGetLibsToBuild(${LIBS_TO_BUILD})
 bsBuildExternalProjects(${LIBS_TO_BUILD})

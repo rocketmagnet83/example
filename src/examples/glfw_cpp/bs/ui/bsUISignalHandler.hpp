@@ -4,18 +4,14 @@
 
 
 
-class uiISignalHandler {
+class bsUISignalHandler {
 public:
-	uiISignalHandler();
-	virtual ~uiISignalHandler();
-
-
+	bsUISignalHandler();
+	virtual ~bsUISignalHandler();
 
 
 protected:
-	void handleSignal() = 0;
-
-
+	virtual void handleSignal() = 0;
 
 };
 

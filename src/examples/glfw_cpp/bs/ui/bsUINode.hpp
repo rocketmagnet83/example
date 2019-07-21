@@ -5,45 +5,42 @@
 #include <string>
 #include <vector>
 
-#include "uiRect.hpp"
-#include "uiSignalHandler.hpp"
-
-namespace bs {
-namespace ui {
+#include "bsUIRect.hpp"
+#include "bsUISignalHandler.hpp"
 
 
-class uiNode : public uiRect, public uiSignalHandler
+class bsUINode : public bsUIRect, public bsUISignalHandler
 {
  public:
-	uiNode(const char *name) : m_node_name(name);
-	virtual ~uiNode();
+	bsUINode(const char *name) : m_node_name(name);
+	virtual ~bsUINode();
 
 	/**
 	 * Add a new node to the list of children.
 	 * \param node The node to add.
 	 */
-	int addNode(uiNode *node);
+	int addNode(bsUINode *node);
 
 	/**
 	 * Remove a new node from the list of children.
 	 * \param node The node to remove.
 	 */
-	int removeNode(uiNode *node);
+	int removeNode(bsUINode *node);
 
 	/**
 	 * Set the parent node.
 	 * \param node The parent node to set.
 	 */
-	int setParent(uiNode *node);
+	int setParent(bsUINode *node);
 
  private:
 
 
  protected:
 	std::string m_node_name;			/** the name of the UINode. */
-	uiRect rect;				/** The rectangle containing the UINode. */
-	uiNode *parent = nullptr;		/** Pointer to the parent element. */
-	std::vector<uiNode*> children;	/** std::vector to store all child nodes. */
+	bsUIRect rect;				/** The rectangle containing the UINode. */
+	bsUINode *parent = nullptr;		/** Pointer to the parent element. */
+	std::vector<bsUINode*> children;	/** std::vector to store all child nodes. */
 
 };
 

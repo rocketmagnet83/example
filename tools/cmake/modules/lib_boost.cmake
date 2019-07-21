@@ -6,6 +6,8 @@ if(WITH_LIB_BOOST)
 	set(LIB_BOOST_DEPS external_boost)
 	set(LIB_BOOST_STATIC_LIBS boost_python37)
 
+	cmake_print_variables(CMAKE_INSTALL_PREFIX)
+
 	ExternalProject_Add(external_boost
 		PREFIX ${CMAKE_BINARY_DIR}/boost
 		URL ${BOOST_URL}

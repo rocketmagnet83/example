@@ -92,6 +92,46 @@ macro(bsIncludeLibExamples)
 	endforeach()
 endmacro()
 
+## bsIsInListBefore
+##
+## arguments: 
+##  1. The list to search
+##  2. string1
+##  3. string2
+##
+## result: is_before=
+##   0 - string1 was not before string2
+##   1 - string1 is before string2 in the list
+##
+function(bsIsInListBefore)
+    set(options)
+    set(oneValueArgs BEFORE AFTER RESULT)
+    set(multiValueArgs LIST)
+    cmake_parse_arguments(var
+        "${options}"
+        "${oneValueArgs}"
+        "${multiValueArgs}"
+        "${ARGN}"
+    )
+    
+    set(index1 0)
+    set(index2 0)
+	set(is_before 0 PARENT_SCOPE) 
+
+    list(FIND LIBS_TO_BUILD ${var_BEFORE} index1)
+    if(index1 GREATER -1)
+        list(FIND LIBS_TO_BUILD ${var_AFTER} index2)
+        if(index2 GREATER -1)
+            cmake_print_variables(index1 index2)
+            if(index1 LESS index2)
+                message(STATUS "is before")
+                set(is_before 1 PARENT_SCOPE)
+            endif()
+        endif()
+    elseif()
+    endif()
+endfunction()
+
 ######################
 ## bsBuildDoxygen() ##
 ######################
