@@ -79,9 +79,9 @@ ExternalProject_Add(main
 	INSTALL_COMMAND ""
 )
 
-set(LIBS_TO_BUILD_EXTERNAL "")
+set(tmp "")
 foreach(tmp ${LIBS_TO_BUILD})
-	list(APPEND LIBS_TO_BUILD_EXTERNAL external_${tmp})
+	list(APPEND tmp external_${tmp})
 endforeach()
 
 
@@ -89,7 +89,7 @@ set(CMAKE_C_COMPILER g++)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
-set(BSEDIT_SRC ${CMAKE_SOURCE_DIR}/src/bsEdit.cpp)
+set(BSEDIT_SRC ${CMAKE_SOURCE_DIR}/src/bsEdit/bsEdit.cpp)
 add_executable(BSEDIT ${BSEDIT_SRC})
 set_target_properties(BSEDIT PROPERTIES RELEASE_OUTPUT_NAME bsEdit)
 set_target_properties(BSEDIT PROPERTIES DEBUG_OUTPUT_NAME bsEdit_d)

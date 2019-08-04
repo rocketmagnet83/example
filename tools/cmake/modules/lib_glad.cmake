@@ -8,7 +8,7 @@ IF(WITH_LIB_GLAD)
 	find_package(Threads REQUIRED)
 
 	set(CMAKE_INSTALL_PREFIX ${OUTPUT_PATH})
-	find_package(glad REQUIRED)
+	#	find_package(glad REQUIRED)
 
 	set(LIB_GLAD_INC_PATH
 		${PLATFORM_INC_PATH}

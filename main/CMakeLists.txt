@@ -17,6 +17,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 #set(OpenGL_GL_PREFERENCE CACHE STRING "LEGACY")
 
 include(ExternalProject)
+include(CMakePrintHelpers)
 #####################################################
 ## These are the settings for the main appliaction ##
 #####################################################
@@ -38,6 +39,7 @@ set(BSEDIT_CXX_COMPILER g++)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/../tools/cmake/)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/../tools/cmake/modules)
 
+cmake_print_variables(CMAKE_MODULE_PATH)
 ###############################
 ## Set path for find_package ##
 ###############################

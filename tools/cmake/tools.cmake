@@ -47,28 +47,43 @@ endmacro()
 macro(bsGetLibsToBuild)
 	message(STATUS "___ bsGetLibsToBuild ___")
 	set(LIBS_TO_BUILD_UN "")
+	
 	get_cmake_property(_vars VARIABLES)
-
 	foreach(_var ${_vars})
 		if(_var MATCHES "^WITH_LIB_([^_]+)$")
 			if(WITH_LIB_${CMAKE_MATCH_1})
-				string(TOLOWER ${CMAKE_MATCH_1} lib_lower)
-				list(APPEND LIBS_TO_BUILD_UN ${lib_lower})
+				message(STATUS "${CMAKE_MATCH_1}")
+				#string(TOLOWER ${CMAKE_MATCH_1} lib_lower)
+				list(APPEND LIBS_TO_BUILD_UN ${CMAKE_MATCH_1})
 			endif()
 		endif()
 	endforeach()
+	
+	cmake_print_variables(LIBS_TO_BUILD_UN)
 
+	foreach(_var ${LIBS_TO_BUILD_UN})
+		cmake_print_variables(_var)
+		if(_var MATCHES "^WITH_LIB_${_var}_DEPENDS$")
+			cmake_print_variables(WITH_LIB_${_var}_DEPENDS)
+			foreach(lib ${WITH_LIB_${_var}_DEPENDS})
+				list(APPEND LIBS_TO_BULD ${lib})
+			endforeach()
+		endif()
+	endforeach()
+
+	cmake_print_variables(LIBS_TO_BUILD_UN)
+	#[[
 	foreach(_var ${LIBS_TO_BUILD_UN})
 		string(TOUPPER ${_var} _var_upper)
         # this should match WITH_LIB_BOOST_DEPENDS for example
         foreach(lib ${WITH_LIB_${_var_upper}_DEPENDS})
             list(APPEND LIBS_TO_BUILD ${lib})
-            list(APPEND LIBS_TO_BUILD ${_var})
         endforeach()
         list(APPEND LIBS_TO_BUILD ${_var})
     endforeach()
     list(REMOVE_DUPLICATES LIBS_TO_BUILD)
-	message(STATUS "LIBS_TO_BULD=${LIBS_TO_BUILD}")
+	]]
+
 endmacro()
 
 ###########################
@@ -129,6 +144,35 @@ function(bsIsInListBefore)
             endif()
         endif()
     elseif()
+    endif()
+endfunction()
+
+##
+##
+##
+function(bsListInsertBefore)
+    set(options)
+    set(oneValueArgs SEARCH INSERT RESULT)
+    set(multiValueArgs LIST)
+    cmake_parse_arguments(var
+        "${options}"
+        "${oneValueArgs}"
+        "${multiValueArgs}"
+        "${ARGN}"
+    )
+    
+    set(index1 0)
+	set(result 0 PARENT_SCOPE) 
+
+    list(FIND var_LIST ${var_SEARCH} index1)
+    cmake_print_variables(var_LIST)
+    if(index1 GREATER -1)
+        cmake_print_variables(index1)
+        list(INSERT var_LIST ${index1} ${var_INSERT})
+        set(result ${var_LIST} PARENT_SCOPE)
+        cmake_print_variables(var_LIST)
+    elseif()
+        set(is_before 0 PARENT_SCOPE)
     endif()
 endfunction()
 
