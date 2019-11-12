@@ -9,34 +9,20 @@ macro(bsGetLibsToBuild)
 	foreach(_var ${_vars})
 		if(_var MATCHES "^WITH_LIB_([^_]+)$")
 			if(WITH_LIB_${CMAKE_MATCH_1})
-#				message(STATUS "${CMAKE_MATCH_1}")
-				#string(TOLOWER ${CMAKE_MATCH_1} lib_lower)
+                set(first "${CMATCH_1}")
 				list(APPEND LIBS_TO_BUILD ${CMAKE_MATCH_1})
-			endif()
-		endif()
-	endforeach()
-	
-	foreach(_var ${LIBS_TO_BUILD})
-		if(_var MATCHES "^WITH_LIB_${_var}_DEPENDS$")
-			cmake_print_variables(WITH_LIB_${_var}_DEPENDS)
-			foreach(lib ${WITH_LIB_${_var}_DEPENDS})
-				list(APPEND LIBS_TO_BULD ${lib})
-			endforeach()
-		endif()
-	endforeach()
-
-	cmake_print_variables(LIBS_TO_BUILD)
-	#[[
-	foreach(_var ${LIBS_TO_BUILD_UN})
-		string(TOUPPER ${_var} _var_upper)
-        # this should match WITH_LIB_BOOST_DEPENDS for example
-        foreach(lib ${WITH_LIB_${_var_upper}_DEPENDS})
-            list(APPEND LIBS_TO_BUILD ${lib})
-        endforeach()
-        list(APPEND LIBS_TO_BUILD ${_var})
+    		endif()
+    	endif()
     endforeach()
-    list(REMOVE_DUPLICATES LIBS_TO_BUILD)
-	]]
+    
+    foreach(_var ${_var})
+        if(_var MATCHES "^WITH_LIB_${MATCH_1}_DEPENDS$")
+            if(bsIsInListBefore(LIBS_TO_BUILD ${MATCH_1} fist))
+                bsListInsertBefore(LIBS_TO_BUILD ${MATCH_1} fist)           
+            endif()                    
+        endif()
+    endforeach()
+    
 
 endmacro()
 
