@@ -75,13 +75,14 @@ bsGetLibsToBuild(${LIBS_TO_BUILD})
 bsBuildExternalProjects(${LIBS_TO_BUILD})
 
 ExternalProject_Add(main
-	SOURCE_DIR ${CMAKE_SOURCE_DIR}/main
+	SOURCE_DIR ${CMAKE_SOURCE_DIR}/tools
 	INSTALL_COMMAND ""
 )
 
-set(tmp "")
+set(LIBS_TO_BUILD_EXTERNAL "")
 foreach(tmp ${LIBS_TO_BUILD})
-	list(APPEND tmp external_${tmp})
+	string(TOLOWER ${tmp} tmp_lower)
+	list(APPEND LIBS_TO_BUILD_EXTERNAL external_${tmp_lower})
 endforeach()
 
 

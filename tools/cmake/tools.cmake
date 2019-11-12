@@ -1,14 +1,62 @@
-#################
-## bsBuildLibs ##
-#################
+####################
+# bsGetLibsToBuild #
+####################
+macro(bsGetLibsToBuild)
+	message(STATUS "___ bsGetLibsToBuild ___")
+	set(LIBS_TO_BUILD "")
+	
+	get_cmake_property(_vars VARIABLES)
+	foreach(_var ${_vars})
+		if(_var MATCHES "^WITH_LIB_([^_]+)$")
+			if(WITH_LIB_${CMAKE_MATCH_1})
+#				message(STATUS "${CMAKE_MATCH_1}")
+				#string(TOLOWER ${CMAKE_MATCH_1} lib_lower)
+				list(APPEND LIBS_TO_BUILD ${CMAKE_MATCH_1})
+			endif()
+		endif()
+	endforeach()
+	
+	foreach(_var ${LIBS_TO_BUILD})
+		if(_var MATCHES "^WITH_LIB_${_var}_DEPENDS$")
+			cmake_print_variables(WITH_LIB_${_var}_DEPENDS)
+			foreach(lib ${WITH_LIB_${_var}_DEPENDS})
+				list(APPEND LIBS_TO_BULD ${lib})
+			endforeach()
+		endif()
+	endforeach()
+
+	cmake_print_variables(LIBS_TO_BUILD)
+	#[[
+	foreach(_var ${LIBS_TO_BUILD_UN})
+		string(TOUPPER ${_var} _var_upper)
+        # this should match WITH_LIB_BOOST_DEPENDS for example
+        foreach(lib ${WITH_LIB_${_var_upper}_DEPENDS})
+            list(APPEND LIBS_TO_BUILD ${lib})
+        endforeach()
+        list(APPEND LIBS_TO_BUILD ${_var})
+    endforeach()
+    list(REMOVE_DUPLICATES LIBS_TO_BUILD)
+	]]
+
+endmacro()
+
+#####################
+## bsBuildExamples ##
+#####################
 macro(bsBuildExternalProjects)
+	message(STATUS "--> bsBuildExternalProjects")
 	foreach(lib ${ARGN})
+		cmake_print_variables(lib)
+
 		bsIncludeLib(${lib})
 		bsGetLibExamples(${lib})
 		bsBuildExamples(${lib})
 	endforeach()
 endmacro()
 
+#####################
+## bsBuildExamples ##
+#####################
 macro(bsBuildExamples)
 	foreach(lib ${ARGN})
 		bsIncludeLibExamples(${lib})
@@ -19,12 +67,13 @@ endmacro()
 ## bsIncludeLib ##
 ##################
 macro(bsIncludeLib)
-	message(STATUS "---> bsIncludeLib")
-	set(fn "${CMAKE_SOURCE_DIR}/tools/cmake/modules/lib_${ARGV0}.cmake")
+	message(STATUS "--> bsIncludeLib")
+	string(TOLOWER ${ARGV0} lib_lower)
+	set(fn "${CMAKE_SOURCE_DIR}/tools/cmake/modules/lib_${lib_lower}.cmake")
 	if(EXISTS ${fn})
-		include(lib_${ARGV0})
+		include(lib_${lib_lower})
 	else()
-		message(FATAL_ERROR "Unable to find library configuration file: ${lib_${ARGV0}}!")
+		message(FATAL_ERROR "Unable to find library configuration file: lib_${lib_lower}!")
 	endif()
 endmacro()
 
@@ -44,56 +93,14 @@ macro(bsGetLibExamples)
 	endforeach()
 endmacro()
 
-macro(bsGetLibsToBuild)
-	message(STATUS "___ bsGetLibsToBuild ___")
-	set(LIBS_TO_BUILD_UN "")
-	
-	get_cmake_property(_vars VARIABLES)
-	foreach(_var ${_vars})
-		if(_var MATCHES "^WITH_LIB_([^_]+)$")
-			if(WITH_LIB_${CMAKE_MATCH_1})
-				message(STATUS "${CMAKE_MATCH_1}")
-				#string(TOLOWER ${CMAKE_MATCH_1} lib_lower)
-				list(APPEND LIBS_TO_BUILD_UN ${CMAKE_MATCH_1})
-			endif()
-		endif()
-	endforeach()
-	
-	cmake_print_variables(LIBS_TO_BUILD_UN)
-
-	foreach(_var ${LIBS_TO_BUILD_UN})
-		cmake_print_variables(_var)
-		if(_var MATCHES "^WITH_LIB_${_var}_DEPENDS$")
-			cmake_print_variables(WITH_LIB_${_var}_DEPENDS)
-			foreach(lib ${WITH_LIB_${_var}_DEPENDS})
-				list(APPEND LIBS_TO_BULD ${lib})
-			endforeach()
-		endif()
-	endforeach()
-
-	cmake_print_variables(LIBS_TO_BUILD_UN)
-	#[[
-	foreach(_var ${LIBS_TO_BUILD_UN})
-		string(TOUPPER ${_var} _var_upper)
-        # this should match WITH_LIB_BOOST_DEPENDS for example
-        foreach(lib ${WITH_LIB_${_var_upper}_DEPENDS})
-            list(APPEND LIBS_TO_BUILD ${lib})
-        endforeach()
-        list(APPEND LIBS_TO_BUILD ${_var})
-    endforeach()
-    list(REMOVE_DUPLICATES LIBS_TO_BUILD)
-	]]
-
-endmacro()
-
 ###########################
 ## bsIncludeLibsExamples ##
 ###########################
 macro(bsIncludeLibExamples)
 	foreach(lib ${ARGN})
-		string(TOUPPER ${lib} lib_upper)
+		string(TOLOWER ${lib} lib_lower)
 		if(DEFINED "WITH_LIB_${lib_upper}_EXAMPLES")
-			foreach(example IN LISTS WITH_LIB_${lib_upper}_EXAMPLES)
+			foreach(example IN LISTS WITH_LIB_${lib_lower}_EXAMPLES)
 				string(TOLOWER ${example} example_lower)
 				set(fn "${CMAKE_SOURCE_DIR}/tools/cmake/modules/lib_${lib}_example_${example_lower}.cmake")
 				set(lib_name "lib_${lib}_example_${example_lower}")

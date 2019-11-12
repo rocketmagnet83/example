@@ -21,9 +21,9 @@
   
   DEBIAN
   ======
-   - libgl1-mesa-dev, texinfo, xorg-dev, autopoint, doxygen, graphviz, sphianx-man, gettext, gnulib, libglew-dev,
-   build-essential, zlib1g-dev, libbz2-dev, libncurses5-dev, libreadline6-dev, libsqlite3-dev, libssl-dev, libgdbm-dev,
-   liblzma-dev, tk8.5-dev, libbz2-dev libncursesw5-dev libgdbm-dev liblzma-dev libsqlite3-dev tk-dev uuid-dev libreadline-dev
+   apt-get install libgl1-mesa-dev texinfo xorg-dev autopoint doxygen graphviz gettext gnulib libglew-dev
+   apt-get install build-essential zlib1g-dev libbz2-dev libncurses5-dev libreadline6-dev libsqlite3-dev libssl-dev libgdbm-dev,
+   apt-get install liblzma-dev libbz2-dev libncursesw5-dev libgdbm-dev liblzma-dev libsqlite3-dev tk-dev uuid-dev libreadline-dev
    - cmake version 3.14 or later
    - apt-get build-dep python3
 
