@@ -4,99 +4,65 @@
 macro(bsGetLibsToBuild)
 	message(STATUS "___ bsGetLibsToBuild ___")
 	set(LIBS_TO_BUILD "")
-	
 	get_cmake_property(_vars VARIABLES)
-	foreach(_var ${_vars})
-		if(_var MATCHES "^WITH_LIB_([^_]+)$")
+	foreach(v ${_vars})
+		if(v MATCHES "^WITH_LIB_([^_]+)$")
 			if(WITH_LIB_${CMAKE_MATCH_1})
-                set(first "${CMATCH_1}")
 				list(APPEND LIBS_TO_BUILD ${CMAKE_MATCH_1})
     		endif()
     	endif()
     endforeach()
-    
-    foreach(_var ${_var})
-        if(_var MATCHES "^WITH_LIB_${MATCH_1}_DEPENDS$")
-            if(bsIsInListBefore(LIBS_TO_BUILD ${MATCH_1} fist))
-                bsListInsertBefore(LIBS_TO_BUILD ${MATCH_1} fist)           
-            endif()                    
-        endif()
-    endforeach()
-    
-
 endmacro()
 
 #####################
 ## bsBuildExamples ##
 #####################
 macro(bsBuildExternalProjects)
-	message(STATUS "--> bsBuildExternalProjects")
 	foreach(lib ${ARGN})
-		cmake_print_variables(lib)
-
 		bsIncludeLib(${lib})
-		bsGetLibExamples(${lib})
-		bsBuildExamples(${lib})
-	endforeach()
-endmacro()
-
-#####################
-## bsBuildExamples ##
-#####################
-macro(bsBuildExamples)
-	foreach(lib ${ARGN})
 		bsIncludeLibExamples(${lib})
 	endforeach()
 endmacro()
+
 
 ##################
 ## bsIncludeLib ##
 ##################
 macro(bsIncludeLib)
-	message(STATUS "--> bsIncludeLib")
-	string(TOLOWER ${ARGV0} lib_lower)
-	set(fn "${CMAKE_SOURCE_DIR}/tools/cmake/modules/lib_${lib_lower}.cmake")
-	if(EXISTS ${fn})
-		include(lib_${lib_lower})
-	else()
-		message(FATAL_ERROR "Unable to find library configuration file: lib_${lib_lower}!")
-	endif()
+	foreach(v ${ARGN})
+		string(TOLOWER ${v} lib_lower)
+		set(fn "${CMAKE_SOURCE_DIR}/tools/cmake/modules/lib_${lib_lower}.cmake")
+		if(EXISTS ${fn})
+			include(lib_${lib_lower})
+		else()
+			message(FATAL_ERROR "Unable to find library configuration file: lib_${lib_lower}!")
+		endif()
+	endforeach()
 endmacro()
 
 ######################
 ## bsGetLibExamples ##
 ######################
-macro(bsGetLibExamples)
-    string(TOUPPER ${lib} lib_upper)
-	set(WITH_LIB_${lib_upper}_EXAMPLES "")
-	# get all examples
-	get_cmake_property(_vars VARIABLES)
-	foreach(_var ${_vars})
-		string(TOUPPER ${lib} lib_upper)
-		if(_var MATCHES "^WITH_LIB_${lib_upper}_EXAMPLE_([A-Za-z]+)$")
-			list(APPEND WITH_LIB_${lib_upper}_EXAMPLES ${CMAKE_MATCH_1})
-		endif()
-	endforeach()
-endmacro()
-
-###########################
-## bsIncludeLibsExamples ##
-###########################
 macro(bsIncludeLibExamples)
 	foreach(lib ${ARGN})
 		string(TOLOWER ${lib} lib_lower)
-		if(DEFINED "WITH_LIB_${lib_upper}_EXAMPLES")
-			foreach(example IN LISTS WITH_LIB_${lib_lower}_EXAMPLES)
-				string(TOLOWER ${example} example_lower)
-				set(fn "${CMAKE_SOURCE_DIR}/tools/cmake/modules/lib_${lib}_example_${example_lower}.cmake")
-				set(lib_name "lib_${lib}_example_${example_lower}")
+		set(WITH_LIB_${lib_upper}_EXAMPLES "")
+		# get all examples
+		get_cmake_property(_vars VARIABLES)
+		foreach(_var ${_vars})
+			if(_var MATCHES "^WITH_LIB_${lib}_EXAMPLE_([A-Za-z]+)$")
+				list(APPEND WITH_LIB_${lib}_EXAMPLES ${CMAKE_MATCH_1})
+			endif()
+			foreach(example ${CMAKE_MATCH_1})
+				string(TOLOWER ${CMAKE_MATCH_1} example_lower)
+				set(fn "${CMAKE_SOURCE_DIR}/tools/cmake/modules/lib_${lib_lower}_example_${example_lower}.cmake")
 				if(EXISTS ${fn})
-					include(${lib_name})
+					include(lib_${lib_lower}_example_${example_lower})
 				else()
-					message(FATAL_ERROR "Could not find example file ${fn} for library ${lib} and (example: ${example_lower})!")
+					message(FATAL_ERROR "Unable to find example file ${fn}")
 				endif()
 			endforeach()
-		endif()
+		endforeach()
 	endforeach()
 endmacro()
 

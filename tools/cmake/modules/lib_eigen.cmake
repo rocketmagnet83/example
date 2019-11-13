@@ -1,6 +1,6 @@
 
 IF(WITH_LIB_EIGEN)
- 
+	message(STATUS "Build with lib_eigen.cmake")
 	set(LIB_EIGEN_INC_PATH
 		${PLATFORM_INC_PATH}
 		${OUTPUT_PATH}/lib/eigen/include/eigen3

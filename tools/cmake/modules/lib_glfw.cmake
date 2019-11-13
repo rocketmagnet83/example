@@ -1,5 +1,6 @@
 
 if(WITH_LIB_GLFW)
+	message(STATUS "Build with lib_glfw.cmake")
     find_package(OpenGL REQUIRED)
     find_package(X11 REQUIRED)
     find_package(Threads REQUIRED)

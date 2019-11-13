@@ -39,13 +39,6 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/tools/cmake/)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/tools/cmake/modules)
 
 
-#################
-## SET OPTIONS ##
-#################
-include(tools)
-include(versions)
-include(options)
-
 ##################################################
 ### OUTPUT_PATH AND PLATFORM SPECIFIC VARIABLES ##
 ##################################################
@@ -70,6 +63,36 @@ ELSEIF(APPLE)
 	include(platform_apple)
 ENDIF()
 
+#####################################################
+## These are the settings for the main appliaction ##
+#####################################################
+set(BSEDIT_INC_PATH			 "" CACHE PATH "Include directories for all supported libraries.")
+set(BSEDIT_LIB_PATH			 "" CACHE PATH "Library directories for all supported libraries.")
+set(BSEDIT_STATIC_LIBS		 "" CACHE STRING "All static libraries to link with.")
+set(BSEDIT_SHARED_LIBS		 "" CACHE STRING "All shared libraries to link with.")
+set(BSEDIT_DEPS				 "" CACHE STRING "All external dependencies to link with.")
+set(BSEDIT_CXX_FLAGS_RELEASE "" CACHE STRING "The release C++ compiler flags for the main application.")
+set(BSEDIT_CXX_FLAGS_DEBUG	 "" CACHE STRING "The debug C++ compiler flags for the main application.")
+set(BSEDIT_DEBUG_NAME	 "" CACHE STRING "The debug name of the final executable.")
+set(BSEDIT_RELEASE_NAME  "" CACHE STRING "The release name of the final executable.")
+set(BSEDIT_INSTALL_PATH		 "${CMAKE_SOURCE_DIR}/build_files/install" CACHE STRING "The base install directory of the application.")
+
+set(BSEDIT_CXX_STANDARD_REQUIRED True)
+set(BSEDIT_CXX_STANDARD 11)
+set(BSEDIT_CXX_COMPILER g++)
+
+
+###############################
+## Set path for find_package ##
+###############################
+set(CMAKE_INSTALL_PREFIX ${OUTPUT_PATH})
+
+
+include(tools)
+include(versions)
+include(options)
+
+
 
 bsGetLibsToBuild(${LIBS_TO_BUILD})
 bsBuildExternalProjects(${LIBS_TO_BUILD})
@@ -78,12 +101,6 @@ ExternalProject_Add(main
 	SOURCE_DIR ${CMAKE_SOURCE_DIR}/tools
 	INSTALL_COMMAND ""
 )
-
-set(LIBS_TO_BUILD_EXTERNAL "")
-foreach(tmp ${LIBS_TO_BUILD})
-	string(TOLOWER ${tmp} tmp_lower)
-	list(APPEND LIBS_TO_BUILD_EXTERNAL external_${tmp_lower})
-endforeach()
 
 
 set(CMAKE_C_COMPILER g++)
@@ -95,7 +112,14 @@ add_executable(BSEDIT ${BSEDIT_SRC})
 set_target_properties(BSEDIT PROPERTIES RELEASE_OUTPUT_NAME bsEdit)
 set_target_properties(BSEDIT PROPERTIES DEBUG_OUTPUT_NAME bsEdit_d)
 
-add_dependencies(${LIBS_TO_BUILD_EXTERNAL})
+set(deps "")
+foreach(v ${LIBS_TO_BUILD})
+	string(TOLOWER ${v} v_lower)
+	list(APPEND deps external_${v_lower})
+endforeach()
+cmake_print_variables(deps)
+
+add_dependencies(${deps})
 install(
 	TARGETS BSEDIT
 	RUNTIME DESTINATION ${OUTPUT_PATH}/main

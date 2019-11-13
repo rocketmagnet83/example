@@ -1,5 +1,5 @@
 IF(WITH_LIB_GLAD)
-	message(STATUS "Included lib_glad.cmake.")
+	message(STATUS "Build with lib_glad.cmake.")
 	###################
 	## first example ##
 	###################
