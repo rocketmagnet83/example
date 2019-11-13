@@ -26,7 +26,6 @@ if(WITH_LIB_GLFW)
     set(LIB_GLFW_STATIC_LIBS
 		${LIB_GLAD_STATIC_LIBS}
         glfw3 
-		glapi
     )
 
     set(LIB_GLFW_SHARED_LIBS

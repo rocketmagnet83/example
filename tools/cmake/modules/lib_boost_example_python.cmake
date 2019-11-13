@@ -9,7 +9,6 @@ if(WITH_LIB_BOOST_EXAMPLE_PYTHON)
 
 	set(LIB_BOOST_EXAMPLE_PYTHON_SRC
         ${CMAKE_SOURCE_DIR}/src/examples/boost/python/boost_python.cpp
-		${OUTPUT_PATH}/lib/python/include/python3.7m/pyconfig.h
     )
 	set(LIB_BOOST_EXAMPLE_PYTHON_INSTALL_PATH
         ${OUTPUT_PATH}/examples/boost/python/

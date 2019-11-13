@@ -76,6 +76,7 @@ set(BSEDIT_CXX_FLAGS_DEBUG	 "" CACHE STRING "The debug C++ compiler flags for th
 set(BSEDIT_DEBUG_NAME	 "" CACHE STRING "The debug name of the final executable.")
 set(BSEDIT_RELEASE_NAME  "" CACHE STRING "The release name of the final executable.")
 set(BSEDIT_INSTALL_PATH		 "${CMAKE_SOURCE_DIR}/build_files/install" CACHE STRING "The base install directory of the application.")
+set(BSEDIT_SRC ${CMAKE_SOURCE_DIR}/src/bsEdit/bsEdit.cpp)
 
 set(BSEDIT_CXX_STANDARD_REQUIRED True)
 set(BSEDIT_CXX_STANDARD 11)
@@ -97,17 +98,17 @@ include(options)
 bsGetLibsToBuild(${LIBS_TO_BUILD})
 bsBuildExternalProjects(${LIBS_TO_BUILD})
 
+#[[
 ExternalProject_Add(main
-	SOURCE_DIR ${CMAKE_SOURCE_DIR}/tools
+	SOURCE_DIR ${CMAKE_SOURCE_DIR}/bsEdit
 	INSTALL_COMMAND ""
 )
-
+]]
 
 set(CMAKE_C_COMPILER g++)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
-set(BSEDIT_SRC ${CMAKE_SOURCE_DIR}/src/bsEdit/bsEdit.cpp)
 add_executable(BSEDIT ${BSEDIT_SRC})
 set_target_properties(BSEDIT PROPERTIES RELEASE_OUTPUT_NAME bsEdit)
 set_target_properties(BSEDIT PROPERTIES DEBUG_OUTPUT_NAME bsEdit_d)
@@ -122,7 +123,7 @@ cmake_print_variables(deps)
 add_dependencies(${deps})
 install(
 	TARGETS BSEDIT
-	RUNTIME DESTINATION ${OUTPUT_PATH}/main
+	RUNTIME DESTINATION ${OUTPUT_PATH}/bsEdit
 )
 
 

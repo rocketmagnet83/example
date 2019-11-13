@@ -1,10 +1,27 @@
 if(WITH_LIB_BOOST)
 	message(STATUS "Build lib_boost.cmake.")
 
-	set(LIB_BOOST_INC_PATH ${OUTPUT_PATH}/lib/boost/include/)
-	set(LIB_BOOST_LIB_PATH ${OUTPUT_PATH}/lib/boost/lib)
+	set(LIB_BOOST_INC_PATH 
+		${PLATFORM_INC_PATH}
+		${OUTPUT_PATH}/lib/boost/include/
+		${OUTPUT_PATH}/lib/python/include/python3.7m/
+		${OUTPUT_PATH}/lib/boost/src/external_boost/
+	)
+	set(LIB_BOOST_LIB_PATH 
+		${PLATFORM_LIB_PATH}
+		${OUTPUT_PATH}/lib/boost/lib
+		${OUTPUT_PATH}/lib/python/lib/python3.7/config-3.7m-x86_64-linux-gnu/
+		${OUTPUT_PATH}/lib/boost/src/external_boost/stage/lib/
+	)
 	set(LIB_BOOST_DEPS external_boost)
-	set(LIB_BOOST_STATIC_LIBS boost_python37)
+	set(LIB_BOOST_STATIC_LIBS 
+		${PLATFORM_STATIC_LIBS} 
+		${CMAKE_DL_LIBS}
+		boost_python37 
+		python3.7m
+		pthread
+		util
+	)
 
 	ExternalProject_Add(external_boost
 		PREFIX ${CMAKE_BINARY_DIR}/boost
