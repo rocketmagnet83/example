@@ -51,14 +51,10 @@ set(OPENSSL_VERSION 1.1.1)
 set(OPENSSL_URL https://www.openssl.org/source/old/${OPENSSL_VERSION}/openssl-${OPENSSL_VERSION}.tar.gz)
 set(OPENSSL_HASH 7079eb017429e0ffb9efb42bf80ccb21)
 
-set(STB_IMAGE_REPO https://raw.githubusercontent.com/nothings/stb/master/stb_image.h)
-set(STB_IMAGE_TAG master)
-set(STB_IMAGE_HASH 0e28238d865510073b5740ae8eba8cd8032cc5b25f94e0f7505fac8036864909)
+set(STBIMAGE_REPO https://github.com/nothings/stb.git)
+set(STBIMAGE_TAG master)
+set(STBIMAGE_HASH feae54a2d91c7123329bf9ed4c9c1dbbd64ae054)
 					     
-set(STB_IMAGE_WRITE_REPO https://raw.githubusercontent.com/nothings/stb/master/stb_image_write.h)
-set(STB_IMAGE_WRITE_TAG master)
-set(STB_IMAGE_WRITE_HASH 0e8b3d80bc6eb8fdb64abc4db9fec608b489bc73418eaf14beda102a0699a4c9)
-
 
 set(FREETYPE_REPO https://github.com/brooklynpacket/freetype2.git)
 set(FREETYPE_TAG 4e653f8dced3795f6f9a0495da34ce3dcdeba970)

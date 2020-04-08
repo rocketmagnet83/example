@@ -1,16 +1,16 @@
-if(WITH_LIB_GLFW_EXAMPLE_CPPBASIC)
+if(WITH_LIB_GLFW_EXAMPLE_CBASIC)
 	if(NOT WITH_LIB_GLAD)
-		message(FATAL_ERROR "Error: Try to build example WITH_LIB_GLFW_EXAMPLE_CPPBASIC without WITH_LIB_GLAD")
+		message(FATAL_ERROR "Error: Try to build example WITH_LIB_GLFW_EXAMPLE_CBASIC without WITH_LIB_GLAD")
 	endif()
 	if(NOT WITH_LIB_GLFW)
-		message(FATAL_ERROR "Error: Try to build example WITH_LIB_GLFW_EXAMPLE_CPPBASIC without WITH_LIB_GLFW")
-	endif()
-	if(NOT WITH_LIB_GLFW)
-		message(FATAL_ERROR "Error: Try to build example WITH_LIB_GLFWEXAMPLE_CPPBASIC withut LIB_GLFW.")
+		message(FATAL_ERROR "Error: Try to build example WITH_LIB_GLFW_EXAMPLE_CBASIC without WITH_LIB_GLFW")
 	endif()
 
 	message(STATUS "Building example WITH_LIB_GLFW_EXAMPLE_CBASIC")
 
+	set(LIB_GLFW_EXAMPLE_CBASIC_CXX_OR_C
+        C
+    )
 	set(LIB_GLFW_EXAMPLE_CBASIC_FLAGS_RELEASE
         "-Wall -Werror -O3"
     )

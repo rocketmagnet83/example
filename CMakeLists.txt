@@ -32,6 +32,9 @@ if(MSVC)
 	)
 ENDIF()
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
+
 #######################
 ### SET MODULE PATH ###
 #######################
@@ -113,12 +116,42 @@ add_executable(BSEDIT ${BSEDIT_SRC})
 set_target_properties(BSEDIT PROPERTIES RELEASE_OUTPUT_NAME bsEdit)
 set_target_properties(BSEDIT PROPERTIES DEBUG_OUTPUT_NAME bsEdit_d)
 
+#[[ set dependencies ]]
 set(deps "")
 foreach(v ${LIBS_TO_BUILD})
 	string(TOLOWER ${v} v_lower)
 	list(APPEND deps external_${v_lower})
 endforeach()
 cmake_print_variables(deps)
+
+#[[ set inc path ]]
+foreach(v ${LIBS_TO_BUILD})
+	list(APPEND BSEDIT_INC_PATH ${LIB_${v}_INC_PATH})
+endforeach()
+target_include_directories(BSEDIT PRIVATE ${BSEDIT_INC_PATH})
+list(REMOVE_DUPLICATES BSEDIT_INC_PATH)
+message(STATUS "inc path for main application: ${BSEDIT_INC_PATH}")
+
+#[ set lib path ]]
+foreach(v ${LIBS_TO_BUILD})
+	list(APPEND BSEDIT_LIB_PATH ${LIB_${v}_LIB_PATH})
+endforeach()
+target_link_directories(BSEDIT PRIVATE ${BSEDIT_LIB_PATH})
+message(STATUS "inc path for main application: ${BSEDIT_LIB_PATH}")
+
+#[[ set static and shared libs ]]
+foreach(v ${LIBS_TO_BUILD})
+	message(STATUS "${v} = ${LIB_${v}_STATIC_LIBS}")
+	list(APPEND BSEDIT_STATIC_LIBS ${LIB_${v}_STATIC_LIBS})
+	list(APPEND BSEDIT_SHARED_LIBS ${LIB_${v}_SHARED_LIBS})
+	set(tmp "")
+	list(APPEND tmp ${BSEDIT_STATIC_LIBS})
+	list(APPEND tmp ${BSEDIT_SHARED_LIBS})
+endforeach()
+list(REMOVE_DUPLICATES tmp)
+target_link_libraries(BSEDIT PRIVATE ${tmp})
+
+
 
 add_dependencies(${deps})
 install(

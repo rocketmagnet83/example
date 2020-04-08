@@ -9,3 +9,4 @@ cscope*
 html
 build
 out
+/bin/

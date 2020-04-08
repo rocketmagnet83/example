@@ -14,7 +14,7 @@ option(WITH_LIB_GLAD_EXAMPLE_CBASIC "Build the basic Glad example (default:0)" T
 option(WITH_LIB_GLFW "Build and link with library GLFW" TRUE)
 option(WITH_LIB_GLFW_EXAMPLE_CBASIC "Build the basic GLFW C example (default:1)" TRUE)
 option(WITH_LIB_GLFW_EXAMPLE_CPPBASIC "Build the GLFW CPP wrapper class example (default:1)" TRUE)
-set(WITH_LIB_GLFW_DEPENDS glad)
+set(WITH_LIB_GLFW_DEPENDS glad nlohmann_json)
 
 
 # WITH_LIB_NLOHMANN_JSON
@@ -38,4 +38,6 @@ option(WITH_LIB_PYTHON_EXAMPLE_BASIC "Simple Python embeding example" TRUE)
 option(WITH_LIB_BOOST "Build with Boost library" TRUE)
 option(WITH_LIB_BOOST_EXAMPLE_PYTHON "Simple BOOST::Python example" TRUE)
 set(WITH_LIB_BOOST_DEPENDS python)
+
+option(WITH_LIB_STBIMAGE "STB Image Library " TRUE)
 

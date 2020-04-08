@@ -8,10 +8,12 @@ macro(bsGetLibsToBuild)
 	foreach(v ${_vars})
 		if(v MATCHES "^WITH_LIB_([^_]+)$")
 			if(WITH_LIB_${CMAKE_MATCH_1})
+				MESSAGE(STATUS "LIBSTOBUILD ADD: ${CMAKE_MATCH_1}")
 				list(APPEND LIBS_TO_BUILD ${CMAKE_MATCH_1})
     		endif()
     	endif()
     endforeach()
+	MESSAGE(STATUS ${LIBS_TO_BUILD})
 endmacro()
 
 #####################
