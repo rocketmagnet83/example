@@ -1,8 +1,17 @@
 
 #include <iostream>
 
+#include "bs/sys/GLFWWrapper.hpp"
 
 
+
+/*
+class MainApp extends public GLFWWrapper {
+
+
+	
+}
+*/
 
 int main(int argc, char **argv)
 {

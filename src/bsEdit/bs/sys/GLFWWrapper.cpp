@@ -4,19 +4,19 @@
 #include <iostream>
 
 
-bs::sys::GLFWWrapper* bs::sys::GLFWWrapper::m_instance = nullptr;
+GLFWWrapper* GLFWWrapper::m_instance = nullptr;
 
 
-bs::sys::GLFWWrapper::GLFWWrapper()
+GLFWWrapper::GLFWWrapper()
 {}
 
-bs::sys::GLFWWrapper::~GLFWWrapper()
+GLFWWrapper::~GLFWWrapper()
 {}
 
 /**
  * Function called to initalize the GLFWWrapper.
  */
-void bs::sys::GLFWWrapper::init(bs::sys::GLFWWrapper *instance)
+void GLFWWrapper::init(GLFWWrapper *instance)
 {
 	m_instance = instance;
 

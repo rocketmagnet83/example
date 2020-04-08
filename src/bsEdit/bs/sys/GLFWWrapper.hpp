@@ -13,7 +13,6 @@ extern "C" {
 #include <string>
 #include <vector>
 
-
 nlohmann::json default_config = 
 {"bs", 
 	{"gr", {
@@ -60,8 +59,10 @@ struct WindowDetails
 	int width, height;
 	int redBits, greenBits, BlueBits;
 	int refreshrate;
-	Monitor *monitor;
+	GLFWmonitor *monitor;
 };
+
+
 
 /**
  * Monitor definition.
@@ -85,19 +86,13 @@ struct Monitor
  */
 class GLFWWrapper {
 public:
-    GLFWWrapper();
-    virtual ~GLFWWrapper();
-
-	virtual void init(GLFWWrapper *instance);
+	static GLFWWrapper* getInstance();
     virtual void exit();
 
 	virtual void run();
 
-	int createMainWindow(int width, int height);
-	int getMonitor(Monitor &monitor);
-	void setWindowIcon(Window *window, int count, const GLFWimage *images);
-	int addWindow(Window *window);
-	int delWindow(Window *window);
+//	WindowManager wnd_manager;
+//	ShaderManager shd_manager;
 	
 	uint64_t getTime();
 
@@ -132,6 +127,9 @@ private:
 
 	
 protected:
+    GLFWWrapper();
+    virtual ~GLFWWrapper();
+
     static GLFWWrapper *m_instance;					/** Static instance of the wrapper class. */
 
 
