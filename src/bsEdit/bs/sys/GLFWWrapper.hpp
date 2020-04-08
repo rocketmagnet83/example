@@ -2,6 +2,7 @@
 #define BS_APP_GLFWWRAPPER_HPP
 
 #include <nlohmann/json.hpp>
+#include <iostream>
 
 #ifdef __cplusplus
 extern "C" {
@@ -11,6 +12,20 @@ extern "C" {
 #endif
 #include <string>
 #include <vector>
+
+#include <Eigen/Dense>
+
+using Eigen::MatrixXd;
+MatrixXd m(4,4);
+
+std::cout << "Eigen Matrix:" << std::
+std::cout << m;
+
+
+
+nlohmann::json = {
+
+}
 
 nlohmann::json default_config = 
 {"bs", 
