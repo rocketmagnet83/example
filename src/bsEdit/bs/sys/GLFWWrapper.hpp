@@ -9,7 +9,6 @@ extern "C" {
 #include "GLFW/glfw3.h"
 }
 #endif
-
 #include <string>
 #include <vector>
 
@@ -23,6 +22,7 @@ nlohmann::json default_config =
    },
 },
 };
+
 
 /**
  * Error code and message from the GLFW library.
@@ -61,6 +61,7 @@ struct WindowDetails
 	int refreshrate;
 	GLFWmonitor *monitor;
 };
+
 
 
 
