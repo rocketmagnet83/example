@@ -1,5 +1,5 @@
-#ifndef BS_APP_GLFWWRAPPER_HPP
-#define BS_APP_GLFWWRAPPER_HPP
+#ifndef _GLFWWRAPPER_HPP__
+#define _GLFWWRAPPER_HPP__
 
 #include <nlohmann/json.hpp>
 #include <iostream>
@@ -13,36 +13,31 @@ extern "C" {
 #include <string>
 #include <vector>
 
-#include <Eigen/Dense>
+using nlohmann::json;
 
-using Eigen::MatrixXd;
-MatrixXd m(4,4);
-
-std::cout << "Eigen Matrix:" << std::
-std::cout << m;
-
-
-
-nlohmann::json = {
-
+auto default_config = R"(
+{
+	"bs":{
+		"gr": {
+			"width": 800,
+			"height": 1024,
+			"bpp": 24,
+			"title": "GLFWWrapper version 0.1",
+			"bg-color": {
+				"r": 1.0,
+				"g": 1.0,
+				"b": 1.0
+			}
+	   }
+	}
 }
-
-nlohmann::json default_config = 
-{"bs", 
-	{"gr", {
-		"width", 800,
-		"height", 1024,
-		"bpp", 24,
-		"title", "GLFWWrapper version 0.1"
-   },
-},
-};
+)"_json;
 
 
 /**
  * Error code and message from the GLFW library.
  */
-struct SystemError
+struct glSystemError
 {
 	int code;
 	std::string msg;
@@ -50,47 +45,8 @@ struct SystemError
 
 
 /**
- * Version information for the GLFW library.
- */
-struct SystemVersion
-{
-	int glfwMajorVersion;				/** The GLFW major version */
-	int glfwMinorVersion;				/** The GLFW minor version */
-	int glfwRevisionVersion;			/** The GLFW revision version */
-	std::string glfwVersionString;		/** The GLFW version string */
-};
-
-
-/**
  * Description of a monitor.
  */
-
-/**
- * Detailed description of a video mode of a window.
- */
-struct WindowDetails
-{
-	std::string title;
-	int width, height;
-	int redBits, greenBits, BlueBits;
-	int refreshrate;
-	GLFWmonitor *monitor;
-};
-
-
-
-
-/**
- * Monitor definition.
- */
-struct Monitor
-{
-	std::string name;								/** The name of the monitor */
-	int pys_width, pys_height;						/** The physical size of the monitor */
-	int posx, posy;									/** The position of the monitor */
-	float gamma;									/** The gamma value of the monitor */
-	std::vector<GLFWvidmode*> vecResolutions;		/** All available resolutions for the monitor */
-};
 
 
 /**
@@ -109,13 +65,16 @@ public:
 
 //	WindowManager wnd_manager;
 //	ShaderManager shd_manager;
-	
+
+
 	uint64_t getTime();
 
 private:
 
 	/**
-	 * General GLFW functions
+	 * General GLFW functio
+	 * 
+	 * ns
 	 */
 
 
@@ -150,11 +109,11 @@ protected:
 
 
 	bool			m_isInit;							/** Is the library successfully initalized ? */
-	SystemVersion	m_version;							/** The version of the GLFW library in use. */
-	SystemError		m_lastError;						/** The last GLFW error occoured. */
+	//SystemVersion	m_version;							/** The version of the GLFW library in use. */
+	//SystemError		m_lastError;						/** The last GLFW error occoured. */
 	uint64_t		m_timerFrequency;					/** Frequency of the timer function */
 
-	std::vector<Monitor*> m_vecMonitors;				/** A vector with all monitors available. */
+	//std::vector<Monitor*> m_vecMonitors;				/** A vector with all monitors available. */
 
 	void getSettings();
 	void getVersion();

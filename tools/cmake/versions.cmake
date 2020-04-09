@@ -52,15 +52,10 @@ set(OPENSSL_URL https://www.openssl.org/source/old/${OPENSSL_VERSION}/openssl-${
 set(OPENSSL_HASH 7079eb017429e0ffb9efb42bf80ccb21)
 
 set(STBIMAGE_REPO https://github.com/nothings/stb.git)
-set(STBIMAGE_TAG master)
-set(STBIMAGE_HASH feae54a2d91c7123329bf9ed4c9c1dbbd64ae054)
-					     
+set(STBIMAGE_TAG f54acd4e13430c5122cab4ca657705c84aa61b08)
 
-set(FREETYPE_REPO https://github.com/brooklynpacket/freetype2.git)
-set(FREETYPE_TAG 4e653f8dced3795f6f9a0495da34ce3dcdeba970)
-
-#########
-
+set(VMATH_REPO https://github.com/drhelius/vmath.git)
+set(VMATH_TAG c6a939dfd95121a3db45d375ad848d7cd039dab4)
 
 
 set(FTGL_REPO https://github.com/BSVino/ftgl-gl3.git)

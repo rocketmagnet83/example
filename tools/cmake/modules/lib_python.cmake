@@ -13,7 +13,7 @@ if(WITH_LIB_PYTHON)
 			URL_MD5 ${PYTHON_HASH}
 			BUILD_IN_SOURCE true
 			CONFIGURE_COMMAND  ./configure --prefix=${OUTPUT_PATH}/lib/python
-			BUILD_COMMAND  make -j1
+			BUILD_COMMAND  make ${}
 			INSTALL_COMMAND cd ${CMAKE_BINARY_DIR}/python/src/external_python/ && make install
 			INSTALL_DIR ${OUTPUT_PATH}/lib/python
 	)

@@ -1,2 +1,8 @@
 
-#include "bs/sys/WindowManager.hpp"
+#include "bs/sys/WindowManager.hpp
+
+
+
+WindowManager::WindowManager(){
+
+}

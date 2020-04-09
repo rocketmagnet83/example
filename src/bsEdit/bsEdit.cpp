@@ -5,13 +5,6 @@
 
 
 
-/*
-class MainApp extends public GLFWWrapper {
-
-
-	
-}
-*/
 
 int main(int argc, char **argv)
 {

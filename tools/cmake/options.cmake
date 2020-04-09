@@ -41,3 +41,8 @@ set(WITH_LIB_BOOST_DEPENDS python)
 
 option(WITH_LIB_STBIMAGE "STB Image Library " TRUE)
 
+option(WITH_LIB_VMATH "Build with the the vmath librariy" TRUE)
+#option(WITH_LIB_VMAT_EXAMPLE_BASIC "Build a simple vmat example" TRUE)
+
+
+
